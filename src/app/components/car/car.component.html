@@ -1,24 +1,36 @@
-<div *ngIf="dataLoaded == false" class="spinner-border text-primary" role="status">
-    <span class="visually-hidden">Loading...</span>
+<!-- <div class="row">
+  <div *ngFor="let car of cars" class="card" style="width: 18rem;">
+    <img src="https://localhost:44371/uploads/c5b07bd2-6687-416e-b31a-e089e2f182d8.png" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">{{car.brandName}} ({{car.modelYear}})</h5>
+      <br>
+      <p class="card-text"><strong>Color: </strong>{{car.colorName}}</p>
+      <p class="card-text"><strong>Transmission: </strong>{{car.description}}</p>
+      <p class="card-text"><strong>Daily Price: </strong>{{car.dailyPrice}}$</p>
+      <a href="#" class="btn btn-primary">Rent</a>
+    </div>
   </div>
-  <table *ngIf="dataLoaded != false" class="table">
-    <thead>
-      <tr>
-        <th>Car Id</th>
-        <th>Brand Name</th>
-        <th>Color Name</th>
-        <th>Model Year</th>
-        <th>Daily Price</th>
-        <th>Description</th>
-      </tr>
-    </thead>
+</div> -->
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Brand Name</th>
+      <th>Color</th>
+      <th>Model Year</th>
+      <th>Daily Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
     <tr *ngFor="let car of cars">
-      <td>{{ car.carId }}</td>
+      <td>{{ car.id }}</td>
       <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice }}</td>
-      <td>{{ car.description }}</td>
+      <td><button routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-success">View Details</button></td>
     </tr>
-  </table>
-  
+  </tbody>
+</table>
