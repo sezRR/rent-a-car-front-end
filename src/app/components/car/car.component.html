@@ -1,17 +1,5 @@
-<!-- <div class="row">
-  <div *ngFor="let car of cars" class="card" style="width: 18rem;">
-    <img src="https://localhost:44371/uploads/c5b07bd2-6687-416e-b31a-e089e2f182d8.png" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">{{car.brandName}} ({{car.modelYear}})</h5>
-      <br>
-      <p class="card-text"><strong>Color: </strong>{{car.colorName}}</p>
-      <p class="card-text"><strong>Transmission: </strong>{{car.description}}</p>
-      <p class="card-text"><strong>Daily Price: </strong>{{car.dailyPrice}}$</p>
-      <a href="#" class="btn btn-primary">Rent</a>
-    </div>
-  </div>
-</div> -->
-
+<br>
+<app-car-filter></app-car-filter>
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -20,6 +8,7 @@
       <th>Color</th>
       <th>Model Year</th>
       <th>Daily Price</th>
+      <th>Description</th>
       <th></th>
     </tr>
   </thead>
@@ -30,6 +19,7 @@
       <td>{{ car.colorName }}</td>
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.description }}</td>
       <td><button routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-success">View Details</button></td>
     </tr>
   </tbody>

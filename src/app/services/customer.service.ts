@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Customer } from '../models/customer';
 import { ListResponseModel } from '../models/listResponseModel';
+import { SingleResponseModel } from '../models/singleResponseModel';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,8 @@ export class CustomerService {
 
   constructor(private httpClient: HttpClient) { }
 
-  getCustomers(): Observable<ListResponseModel<Customer>>{
+  getCustomers(): Observable<SingleResponseModel<Customer>>{
     this.httpClient
-      return this.httpClient.get<ListResponseModel<Customer>>(this.apiUrl);
+      return this.httpClient.get<SingleResponseModel<Customer>>(this.apiUrl);
   }
 }

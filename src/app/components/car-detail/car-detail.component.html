@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="card" style="width: 36rem;">
+  <div class="card">
     <img src="https://localhost:44371/uploads/{{car.imagePath}}" class="card-img-top" alt="...">
     <div class="card-body">
       <h4 class="card-title">{{car.brandName}} ({{car.modelYear}})</h4>
@@ -7,7 +7,33 @@
       <p class="card-text"><strong>Color: </strong>{{car.colorName}}</p>
       <p class="card-text"><strong>Transmission: </strong>{{car.description}}</p>
       <p class="card-text"><strong>Daily Price: </strong>{{car.dailyPrice}}$</p>
-      <a href="#" class="btn btn-primary">Rent</a>
+
+      <div class="col-md form-group">
+        <label for="rent-start-date-input">Pick-Up Date:</label>
+        <input
+          [(ngModel)]="rentDate"
+          name="rentStartDate"
+          class="form-control"
+          type="datetime-local"
+          id="rent-start-date-input"
+          required
+        />
+      </div>
+
+      <div class="col-md form-group">
+        <label for="rent-end-date-input">Return Date:</label>
+        <input
+          [(ngModel)]="returnDate"
+          name="rentEndDate"
+          class="form-control"
+          type="datetime-local"
+          id="rent-end-date-input"
+          required
+        />
+      </div>
+      <br>
+      <button (click)="rent()" class="btn btn-primary" type="button">Rent</button>
+
     </div>
   </div>
 </div>
