@@ -1,0 +1,17 @@
+<br>
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Color Name</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let color of colors">
+      <td>{{ color.id }}</td>
+      <td>{{ color.colorName }}</td>
+      <td><button routerLink = "update/{{color.id}}" type="button" class="btn btn-warning">Update</button></td>
+    </tr>
+  </tbody>
+</table>

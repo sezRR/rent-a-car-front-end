@@ -1,0 +1,42 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Update {{car.brandName}}</h5></div>
+            <div class="card-body">
+                <form [formGroup]="carUpdateForm">
+                    <div class="mb-3">
+                        <label for="brandId">Brand Id</label>
+                        <div class="form-group">
+                            <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Type the new brand id">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="colorId">Color Id</label>
+                        <div class="form-group">
+                            <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Type the new color id">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="modelYear">Model Year</label>
+                        <div class="form-group">
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Type the new model year">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="dailyPrice">Daily Price</label>
+                        <div class="form-group">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Type the new daily price">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description">Description</label>
+                        <div class="form-group">
+                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Type the new car description">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button type="button" class="btn btn-warning btn-block" (click)="update()">Update</button>
+        </div>
+    </div>
+</div>

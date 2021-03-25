@@ -20,7 +20,10 @@
       <td>{{ car.modelYear }}</td>
       <td>{{ car.dailyPrice }}</td>
       <td>{{ car.description }}</td>
-      <td><button routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-success">View Details</button></td>
+      <td>
+        <button routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-success me-md-4">View Details</button>
+        <button routerLink = "/cars/update/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-secondary btn-warning">Update</button>
+      </td>
     </tr>
   </tbody>
 </table>

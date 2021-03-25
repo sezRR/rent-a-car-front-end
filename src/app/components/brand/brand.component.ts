@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { Brand } from 'src/app/models/brand';
 import { BrandService } from 'src/app/services/brand.service';
 
@@ -11,7 +12,7 @@ export class BrandComponent implements OnInit {
   brands:Brand[] = [];
   currentBrand: Brand;
 
-  filterText = "";
+  filterTextBrand = "";
 
   dataLoaded = false;
 
@@ -26,6 +27,10 @@ export class BrandComponent implements OnInit {
       this.brands = response.data;
       this.dataLoaded = true;
     });
+  }
+
+  getBrandsArrayValue(){
+    return this.brands
   }
 
   setCurrentBrand(brand:Brand){

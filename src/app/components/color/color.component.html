@@ -1,13 +1,17 @@
 <div class="mb-3">
-  <label for="filterText" class="form-label">Search Color</label>
-  <input type="text" [(ngModel)]="filterText" class="form-control" id="filterText" placeholder="Type the color name">
+  <label for="filterTextColor" class="form-label">Search Color</label>
+  <input type="text" [(ngModel)]="filterTextColor" class="form-control" id="filterTextColor" placeholder="Type the color name">
 </div>
-<div *ngIf="filterText.length > 2" class="alert alert-info">
-  {{filterText}} searched
+<div *ngIf="filterTextColor.length > 2" class="alert alert-info">
+  {{filterTextColor}} searched
 </div>
 
 <ul class="list-group">
   <li [class]="getAllColorClass()" routerLink = "/cars">All Colors</li>
-  <li (click)="setCurrentColor(color)" routerLink = "/cars/color/{{color.colorId}}" *ngFor="let color of colors | filterColor:filterText" [class]="getCurrentColorClass(color)">
+  <li (click)="setCurrentColor(color)" routerLink = "/cars/color/{{color.id}}" *ngFor="let color of colors | filterColor:filterTextColor" [class]="getCurrentColorClass(color)">
   {{color.colorName}}</li>
+</ul>
+<br>
+<ul class="list-group">
+  <li [class]="getAllColorClass()" routerLink = "/colors">List Of Colors</li>
 </ul>

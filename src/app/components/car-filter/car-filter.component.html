@@ -2,14 +2,14 @@
     <div class="col col-4">
         <select [ngModel]="brandFilter" (ngModelChange)="onChangeBrandFilter($event)" class="form-select form-select-lg mb-3">
             <option value="0">Filter for the Brands</option>
-            <option *ngFor="let brand of brands" [value]="brand.brandId">{{brand.brandName}}</option>
+            <option *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</option>
         </select>
     </div>
 
     <div class="col col-4">
         <select [ngModel]="colorFilter" (ngModelChange)="onChangeColorFilter($event)" class="form-select form-select-lg">
             <option value="0">Filter for the Colors</option>
-            <option *ngFor="let color of colors" [value]="color.colorId">{{color.colorName}}</option>
+            <option *ngFor="let color of colors" [value]="color.id">{{color.colorName}}</option>
         </select> 
     </div>
 

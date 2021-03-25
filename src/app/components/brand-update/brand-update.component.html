@@ -1,0 +1,18 @@
+<div class="content">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header"><h5 class="title">Update {{brand.brandName}} of Color</h5></div>
+            <div class="card-body">
+                <form [formGroup]="brandUpdateForm">
+                    <div class="mb-3">
+                        <label for="brandName">Brand Name</label>
+                        <div class="form-group">
+                            <input type="text" id="brandName" formControlName="brandName" class="form-control" placeholder="Type the new brand name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <button type="button" class="btn btn-warning btn-block" (click)="update()">Update</button>
+        </div>
+    </div>
+</div>
