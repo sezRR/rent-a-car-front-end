@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container-fluid">
       <a class="navbar-brand" href="#">RENT A CAR</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -7,7 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" href="http://localhost:4200/cars">Cars</a>
+            <a class="nav-link" [routerLink]="['/brands']">Brands</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/colors']">Colors</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]="['/cars']">Cars</a>
           </li>
           <!-- <li class="nav-item">
             <a class="nav-link" href="#">Customers</a>
@@ -16,17 +22,44 @@
             <a class="nav-link" href="#">Rentals</a>
           </li> -->
           <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
+            <a class="nav-link dropdown-toggle " id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Add
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/brands/add']">Brand</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/colors/add']">Color</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/cars/add']">Car</a></li>
+              <!-- <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Car</a></li> -->
             </ul>
           </li>
         </ul>
+
+        <div *ngIf="isLogin === false" class="row">
+          <div class="col-sm">
+            <button [routerLink]="['/login']" class="btn btn-outline-light" type="submit">Login</button>
+          </div>
+          <div class="col-sm">
+            <button [routerLink]="['/register']" class="btn btn-outline-light" type="submit">Register</button>
+          </div>
+        </div>
+
+        <div *ngIf="isLogin === true" class="row">
+          <div class="col-sm">
+            <div class="btn-group">
+              <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                {{user?.firstName}} {{user?.lastName}}
+              </button>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" [routerLink]="['/settings']">Settings</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" (click)="signOut()">Sign Out</a></li>
+              </ul>
+            </div>
+
+            <!-- <button (click)="getUserById()" class="btn btn-outline-light" type="submit">{{user?.firstName}} {{user?.lastName}}</button> -->
+          </div>
+        </div>
       </div>
     </div>
   </nav>

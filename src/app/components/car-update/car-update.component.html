@@ -1,37 +1,43 @@
 <div class="content">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header"><h5 class="title">Update {{car.brandName}}</h5></div>
+            <div class="card-header"><h5 class="title">Update {{car?.brandName}}</h5></div>
             <div class="card-body">
                 <form [formGroup]="carUpdateForm">
                     <div class="mb-3">
                         <label for="brandId">Brand Id</label>
                         <div class="form-group">
-                            <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Type the new brand id">
+                            <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Type the new Brand Id">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="colorId">Color Id</label>
                         <div class="form-group">
-                            <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Type the new color id">
+                            <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Type the new Color Id">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="modelYear">Model Year</label>
                         <div class="form-group">
-                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Type the new model year">
+                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Type the new Model Year">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="dailyPrice">Daily Price</label>
                         <div class="form-group">
-                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Type the new daily price">
+                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Type the new Daily Price">
                         </div>
                     </div>
                     <div class="mb-3">
                         <label for="description">Description</label>
                         <div class="form-group">
-                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Type the new car description">
+                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Type the new car Description">
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="minimumFindeksRating">Minimum Findeks Rating</label>
+                        <div class="form-group">
+                            <input type="number" id="minimumFindeksRating" formControlName="minimumFindeksRating" class="form-control" placeholder="Type the new Minimum Findeks Rating">
                         </div>
                     </div>
                 </form>

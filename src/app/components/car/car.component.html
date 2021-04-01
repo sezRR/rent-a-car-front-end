@@ -9,6 +9,7 @@
       <th>Model Year</th>
       <th>Daily Price</th>
       <th>Description</th>
+      <th>Minumum Findeks Rating</th>
       <th></th>
     </tr>
   </thead>
@@ -18,8 +19,9 @@
       <td>{{ car.brandName }}</td>
       <td>{{ car.colorName }}</td>
       <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice }}</td>
+      <td>{{ car.dailyPrice | currency}}</td>
       <td>{{ car.description }}</td>
+      <td>{{ car.minimumFindeksRating }}</td>
       <td>
         <button routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-success me-md-4">View Details</button>
         <button routerLink = "/cars/update/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-secondary btn-warning">Update</button>

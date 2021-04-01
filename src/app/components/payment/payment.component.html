@@ -1,11 +1,13 @@
-<form>
+<br>
+<form [formGroup]="paymentForm">
   <div class="form-group">
     <label for="nameAndSurname">Name on Card</label>
     <input
       type="text"
       class="form-control"
       id="nameAndSurname"
-      placeholder="Sezer Tetik"
+      formControlName="nameOnCard"
+      [placeholder]="nameAndSurname"
     />
   </div>
   <div class="form-group">
@@ -14,20 +16,22 @@
       type="tel"
       inputmode="numeric"
       maxlength="19"
+      formControlName="cardNumberForm"
       class="form-control"
       id="cardNumber"
-      placeholder="0000-0000-0000-0000"
+      [placeholder]="cardNumber"
     />
   </div>
   <div class="form-group">
     <label for="cvv">CVV</label>
     <input
+      formControlName="cvvForm"
       type="tel"
       inputmode="numeric"
       maxlength="3"
       class="form-control"
       id="cvv"
-      placeholder="000"
+      [placeholder]="cvv"
     />
   </div>
   <div class="form-group">
@@ -35,20 +39,44 @@
     <div id="expiration-date-input" class="input-group">
       <input
         type="number"
+        formControlName="monthForm"
         class="form-control"
-        placeholder="Month"
+        [placeholder]="monthForm"
         max="12"
-        required
       />
       <span class="input-group-text">/</span>
       <input
         type="number"
+        formControlName="monthYear"
         class="form-control"
-        placeholder="Year"
+        [placeholder]="yearForm"
         max="2031"
-        required
       />
     </div>
   </div>
+  <br>
   <button (click)="pay()" type="button" class="btn btn-primary">Pay</button>
+  <button [hidden]="true" id="openModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button>
 </form>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Payment Informations</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+
+        <div class="modal-body">
+          Do you want save your credit card informations for next payment to do easily this section ?
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-danger" data-bs-dismiss="modal">No</button>
+          <button type="button" class="btn btn-success" (click)="savePaymentInformation()" data-bs-dismiss="modal">Yes</button>
+        </div>
+
+      </div>
+    </div>
+  </div>

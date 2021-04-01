@@ -5,5 +5,6 @@ export interface Car{
     modelYear: number;
     dailyPrice: number;
     description: string;
-    imagePath: string;
+    minimumFindeksRating: number;
+    imagePath?: string;
 }

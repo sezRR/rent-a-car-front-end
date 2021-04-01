@@ -1,0 +1,44 @@
+<br>
+<div class="content">
+  <div class="col-md-12">
+      <div class="card">
+          <div class="card-header"><h5 class="title">Update Settings</h5></div>
+          <div class="card-body">
+              <form [formGroup]="settingsUpdateForm">
+                  <div class="mb-3">
+                      <label for="firstName">First Name (Current: {{user?.firstName}})</label>
+                      <div class="form-group">
+                          <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="Type the your new First Name">
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="lastName">Last Name (Current: {{user?.lastName}})</label>
+                      <div class="form-group">
+                          <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Type the your new Last Name">
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="email">E-Mail (Current: {{user?.email}})</label>
+                      <div class="form-group">
+                          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Type the your new E-Mail">
+                      </div>
+                  </div>
+                  <div class="mb-3">
+                      <label for="password">New Password</label>
+                      <div class="form-group">
+                          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Type the your new Password">
+                      </div>
+                  </div>
+                  <br>
+                  <div class="mb-3">
+                      <label for="currentPassword">Current Password</label>
+                      <div class="form-group">
+                          <input type="password" id="currentPassword" formControlName="currentPassword" class="form-control" placeholder="Type the your Current Password">
+                      </div>
+                  </div>
+              </form>
+          </div>
+          <button type="button" class="btn btn-warning btn-block" (click)="update()">Update</button>
+      </div>
+  </div>
+</div>

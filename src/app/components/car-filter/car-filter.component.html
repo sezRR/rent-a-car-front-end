@@ -14,7 +14,7 @@
     </div>
 
     <div class="col col-4 d-grid gap-2 d-md-block">
-        <button [disabled]="brandFilter === 0 || colorFilter === 0" routerLink="filter/{{brandFilter}}/{{colorFilter}}" type="button" class="btn btn-lg btn-primary me-md-4">Filter</button>
+        <button [disabled]="brandFilter === 0 || colorFilter === 0" routerLink="/cars/filter/{{brandFilter}}/{{colorFilter}}" type="button" class="btn btn-lg btn-primary me-md-4">Filter</button>
         <button [disabled]="brandFilter === 0 && colorFilter === 0" (click)="resetFilter()" type="button" class="btn btn-secondary btn-lg btn-danger">Clear</button>
     </div>
 </div>
