@@ -14,6 +14,8 @@ export class ColorUpdateComponent implements OnInit {
   colorUpdateForm:FormGroup
   color:Color
 
+  focus:any
+
   constructor(private colorService: ColorService, private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder, private toastrService:ToastrService) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class ColorUpdateComponent implements OnInit {
         }, 1000);
       })
     } else {
-      this.toastrService.error("Oops, something went wrong..", "Error")
+      this.toastrService.warning("Please check your forms", "Warning")
     }
   }
 }

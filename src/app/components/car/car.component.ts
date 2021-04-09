@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Car } from 'src/app/models/car';
+import { CarImage } from 'src/app/models/carImage';
+import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 
 @Component({
@@ -12,7 +15,7 @@ export class CarComponent implements OnInit {
   cars:Car[] = [];
   dataLoaded = false;
 
-  constructor(private carService: CarService, private activatedRoute:ActivatedRoute) { }
+  constructor(private carService: CarService, private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private carImageService:CarImageService) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params=>{
@@ -28,6 +31,27 @@ export class CarComponent implements OnInit {
       else{
         this.getCars()
       }
+    })
+  }
+
+  carImages:CarImage[] = []
+
+  deleteCar(car:Car){
+    this.carImageService.getImagesByCarId(car.id).subscribe(response =>{
+      this.carImages = response.data
+
+      for (let i = 0; i < this.carImages.length; i++) {
+        this.carImageService.delete(this.carImages[i].carId).subscribe(response=>{
+          this.toastrService.success(i + 1 + ". Photo's of Car deleted.")
+        }).unsubscribe
+      }
+
+      this.carService.delete(car).subscribe(response =>{
+        this.toastrService.success(response.message,"Success")
+        setTimeout(() => {
+          window.location.reload();
+        }, 1000);
+      })
     })
   }
 

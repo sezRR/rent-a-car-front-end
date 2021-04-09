@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Car } from '../models/car';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -10,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root'
 })
 export class CarService {
-  apiUrl = "https://localhost:44371/api/";
+  apiUrl = environment.apiUrl;
 
   constructor(private httpClient : HttpClient) { }
 
@@ -44,8 +45,19 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(newPath, car)
   }
 
+  addreturnabledata(car:Car):Observable<SingleResponseModel<Car>>{
+    let newPath = this.apiUrl + "cars/addreturnabledata"
+    return this.httpClient.post<SingleResponseModel<Car>>(newPath, car)
+  }
+
   update(car:Car):Observable<ResponseModel>{
     let newPath = this.apiUrl + "cars/update"
     return this.httpClient.post<ResponseModel>(newPath, car)
+  }
+
+  delete(car:Car):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "cars/delete"
+    return this.httpClient.post<ResponseModel>(newPath, car)
+
   }
 }

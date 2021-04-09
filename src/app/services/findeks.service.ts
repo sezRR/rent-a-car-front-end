@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ResponseModel } from '../models/responseModel';
 import { SingleResponseModel } from '../models/singleResponseModel';
 
@@ -8,12 +9,12 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root'
 })
 export class FindeksService {
-  apiUrl = 'https://localhost:44371/api/findekses/';
+  apiUrl = environment.apiUrl;
 
   constructor(private httpClient:HttpClient) { }
 
   calculate() : Observable<SingleResponseModel<number>>{
-    let newPath = this.apiUrl + "calculate"
+    let newPath = this.apiUrl + "findekses/calculate"
     return this.httpClient.get<SingleResponseModel<number>>(newPath)
   }
 }

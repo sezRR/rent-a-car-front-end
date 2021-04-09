@@ -12,6 +12,9 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class ColorAddComponent implements OnInit {
   colorAddForm : FormGroup;
+  focus:any
+
+  isInvalid:boolean = false
 
   constructor(private formBuilder: FormBuilder, private colorService: ColorService, private toastrService:ToastrService) { }
 
@@ -35,7 +38,8 @@ export class ColorAddComponent implements OnInit {
         }, 1000);
       })
     } else {
-      this.toastrService.error("Please check your color name.", "Error");
+      // this.toastrService.warning("Please check your color name.", "Warning");
+      this.isInvalid=true
     }
   }
 }

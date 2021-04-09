@@ -1,20 +1,28 @@
-<div class="row mb-2">
-    <div class="col col-4">
-        <select [ngModel]="brandFilter" (ngModelChange)="onChangeBrandFilter($event)" class="form-select form-select-lg mb-3">
+
+<div class="row">
+    <div class="col-2 col-sm-3" ngbDropdown>
+        <select class="btn dropdown-toggle custom-select" [ngModel]="brandFilter" (ngModelChange)="onChangeBrandFilter($event)" aria-labelledby="dropdownMenuButton" ngbDropdownToggle>
             <option value="0">Filter for the Brands</option>
-            <option *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</option>
+          <option class="dropdown-item" *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</option>
         </select>
     </div>
 
-    <div class="col col-4">
-        <select [ngModel]="colorFilter" (ngModelChange)="onChangeColorFilter($event)" class="form-select form-select-lg">
+    <div class="col-2" ngbDropdown>
+        <select class="btn btn-secondary dropdown-toggle custom-select" [ngModel]="colorFilter" (ngModelChange)="onChangeColorFilter($event)" aria-labelledby="dropdownMenuButton" ngbDropdownToggle>
             <option value="0">Filter for the Colors</option>
-            <option *ngFor="let color of colors" [value]="color.id">{{color.colorName}}</option>
-        </select> 
+          <option class="dropdown-item" *ngFor="let color of colors" [value]="color.id">{{color.colorName}}</option>
+        </select>
     </div>
 
-    <div class="col col-4 d-grid gap-2 d-md-block">
-        <button [disabled]="brandFilter === 0 || colorFilter === 0" routerLink="/cars/filter/{{brandFilter}}/{{colorFilter}}" type="button" class="btn btn-lg btn-primary me-md-4">Filter</button>
-        <button [disabled]="brandFilter === 0 && colorFilter === 0" (click)="resetFilter()" type="button" class="btn btn-secondary btn-lg btn-danger">Clear</button>
-    </div>
+        <div class="col-2">
+            <button [disabled]="brandFilter === 0 || colorFilter === 0" routerLink="/cars/filter/{{brandFilter}}/{{colorFilter}}" type="button" class="btn btn-lg btn-primary custom-button">Filter</button>
+
+        </div>
+        <div class="col-2">
+            <button [disabled]="brandFilter === 0 && colorFilter === 0" (click)="resetFilterBoxes()" type="button" class="btn btn-secondary btn-lg btn-danger button2">Clear</button>
+        </div>
+        <div class="col-2">
+            <button [disabled]="isFiltered === false" (click)="resetFilter()" routerLink="/cars" type="button" class="btn btn-secondary btn-lg btn-danger button3">Reset</button>
+        </div>
 </div>
+<br>

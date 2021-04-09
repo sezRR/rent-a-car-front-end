@@ -1,0 +1,19 @@
+.block {
+  width: 250%;
+  max-width: 312px;
+  min-width: 312px;
+}
+
+.invalid-feedback {
+  display: none;
+  width: 100%;
+  margin-top: 0.25rem;
+  font-size: 80%;
+  color: red;
+  margin-left: 5px;
+}
+
+.invalid-button {
+  border:solid red;
+  border-width: 1px;
+}

@@ -1,64 +1,76 @@
-<div class="content">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header"><h5 class="title">Add Car</h5></div>
-            <div class="card-body">
-                <form [formGroup]="carAddForm">
-                    <div class="mb-3">
-                        <label for="brandId">Brand Id</label>
-                        <div class="form-group">
-                            <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Brand Id">
-                        </div>
+<main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center mb-4">
+                  <h4>Add New Car</h4>
+                </div>
+                <div class="btn-wrapper text-center">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/car.png">
+                  </span>
+                </div>
+                <br>
+                <br>
+                <form role="form" [formGroup]="carAddForm">
+                  <div ngbDropdown>
+                    <button class="btn btn-secondary dropdown-toggle block" [ngClass]="{'invalid-button': isNotInvalidButtonBrand}" type="button" id="dropdownMenuButtonBrand" ngbDropdownToggle>
+                      {{brand.brandName}}
+                    </button>
+                    <div class="block" aria-labelledby="dropdownMenuButtonBrand" ngbDropdownMenu>
+                      <a class="dropdown-item text-center" (click)="setBrand(brand)" *ngFor="let brand of brands">{{brand.brandName}}</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="colorId">Color Id</label>
-                        <div class="form-group">
-                            <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Color Id">
-                        </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div ngbDropdown>
+                    <button class="btn btn-secondary dropdown-toggle block" [ngClass]="{'invalid-button': isNotInvalidButtonColor}" type="button" id="dropdownMenuButtonColor" ngbDropdownToggle>
+                      {{color.colorName}}
+                    </button>
+                    <div class="block" aria-labelledby="dropdownMenuButtonColor" ngbDropdownMenu>
+                      <a class="dropdown-item text-center" (click)="setColor(color)" *ngFor="let color of colors">{{color.colorName}}</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="modelYear">Model Year</label>
-                        <div class="form-group">
-                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Model Year">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="dailyPrice">Daily Price</label>
-                        <div class="form-group">
-                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Daily Price">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="description">Description</label>
-                        <div class="form-group">
-                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Description">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="minimumFindeksRating">Minimum Findeks Rating</label>
-                        <div class="form-group">
-                            <input type="text" id="minimumFindeksRating" formControlName="minimumFindeksRating" class="form-control" placeholder="Minimum Findeks Rating">
-                        </div>
-                    </div>
-                </form>
-                <!-- <form [formGroup]="carImageAddForm">
-                    <div class="mb-3">
-                        <label for="imagePath">Car Images</label>
-                        <div class="mb-3">
-                            <div class="form-group">
-                                <input
-                                type="file"
-                                id="imagePath" name="imagePath"
-                                formControlName="imagePath"
-                                accept="image/png, image/jpeg"
-                                (change)="onFileSelected($event)">
-                            </div>
+                  </div>
+                  <br>
+                  <br>
+                  <app-car-add-field formControlName="modelYear" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['modelYear'].errors" [focused]="carAddForm.controls['modelYear'].touched" [dirty]="carAddForm.controls['modelYear'].dirty" [placeholder]="modelYearPlaceholder" [iconClass]="modelYearIconClass" [invalidMessage]="modelYearInvalidMessage"></app-car-add-field>
+                  <app-car-add-field formControlName="dailyPrice" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['dailyPrice'].errors" [focused]="carAddForm.controls['dailyPrice'].touched" [dirty]="carAddForm.controls['dailyPrice'].dirty" [placeholder]="dailyPricePlaceholder" [iconClass]="dailyPriceIconClass" [invalidMessage]="dailyPriceInvalidMessage"></app-car-add-field>
+                  <app-car-add-field formControlName="description" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['description'].errors" [focused]="carAddForm.controls['description'].touched" [dirty]="carAddForm.controls['description'].dirty" [placeholder]="descriptionPlaceholder" [iconClass]="descriptionIconClass" [invalidMessage]="descriptionInvalidMessage"></app-car-add-field>
+                  <app-car-add-field formControlName="minimumFindeksRating" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['minimumFindeksRating'].errors" [focused]="carAddForm.controls['minimumFindeksRating'].touched" [dirty]="carAddForm.controls['minimumFindeksRating'].dirty" [placeholder]="minimumFindeksRatingPlaceholder" [iconClass]="minimumFindeksRatingIconClass" [invalidMessage]="minimumFindeksRatingInvalidMessage"></app-car-add-field>
 
-                        </div>  
-                    </div>
-                </form> -->
+                  <form role="form" [formGroup]="carImageAddForm">
+                    <input type="file" id="file" name="file"><br><br>
+                  </form>
+                </form>
+
+                  <div class="text-center">
+                    <button type="button" (click)="add()" class="btn btn-primary my-4">Add</button>
+                  </div>
+              </div>
             </div>
-            <button type="button" class="btn btn-primary btn-block" (click)="add()">Add</button>
+            <div class="row mt-3">
+              <div class="col-6">
+                <a href="javascript:void(0)" class="text-light">
+                  <small routerLink="/cars">Check Cars</small>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+    </section>
+  </main>
+  

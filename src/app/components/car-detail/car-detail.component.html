@@ -1,39 +1,92 @@
-<div class="row">
-  <div class="card">
-    <img src="https://localhost:44371/uploads/{{car?.imagePath}}" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h4 class="card-title">{{car?.brandName}} ({{car?.modelYear}})</h4>
-      <br>
-      <p class="card-text"><strong>Color: </strong>{{car?.colorName}}</p>
-      <p class="card-text"><strong>Transmission: </strong>{{car?.description}}</p>
-      <p class="card-text"><strong>Daily Price: </strong>{{car?.dailyPrice}}$</p>
-
-      <div class="col-md form-group">
-        <label for="rent-start-date-input">Pick-Up Date:</label>
-        <input
-          [(ngModel)]="rentDate"
-          name="rentStartDate"
-          class="form-control"
-          type="datetime-local"
-          id="rent-start-date-input"
-          required
-        />
-      </div>
-
-      <div class="col-md form-group">
-        <label for="rent-end-date-input">Return Date:</label>
-        <input
-          [(ngModel)]="returnDate"
-          name="rentEndDate"
-          class="form-control"
-          type="datetime-local"
-          id="rent-end-date-input"
-          required
-        />
-      </div>
-      <br>
-      <button (click)="rent()" class="btn btn-primary" type="button">Rent</button>
-
+<main>
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
     </div>
-  </div>
-</div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card bg-secondary shadow border-0">
+            <h1 class="card-header text-center">Rental Car</h1>
+            <div class="card-body px-lg-5 py-lg-5">
+
+                <ngb-carousel>
+                  <ng-template *ngFor="let carImage of carImages" ngbSlide>
+                    <img src="https://localhost:44371/uploads/{{carImage?.imagePath}}" class="img-fluid" alt="...">
+                  </ng-template>
+              </ngb-carousel>
+              <h2 class="carousel-description text-center">{{car?.brandName}} {{car?.description}} ({{car?.modelYear}})</h2>
+              <br>
+                  <p class="text-center header">Car Details</p>
+                  <div class="dropdown-divider"></div>
+                  <br>
+                  <p class="card-text details-item">Brand: <span class="details-item-prop">{{car?.brandName}}</span></p>
+                  <p class="card-text details-item">Car Model: <span class="details-item-prop">{{car?.description}}</span></p>
+                  <p class="card-text details-item">Color: <span class="details-item-prop">{{car?.colorName}}</span></p>
+                  <p class="card-text details-item">Model Year: <span class="details-item-prop">{{car?.modelYear}}</span></p>
+                  <p class="card-text details-item">Daily Price: <span class="details-item-prop">{{car?.dailyPrice | currency}}</span></p>
+                  <p class="card-text details-item">Minimum Findeks Rating: <span class="details-item-prop">{{car?.minimumFindeksRating}}</span></p>
+                  <br>
+                  <p class="text-center header">Your Rental Informations</p>
+                  <div class="dropdown-divider"></div>
+                  <br>
+                    <form [formGroup]="rentForm">
+                      <div class="" ngbDropdown>
+                        <button class="btn btn-secondary dropdown-toggle block" type="button" id="dropdownMenuButtonCompany" ngbDropdownToggle>
+                          {{customer.companyName}}
+                        </button>
+                        <div class="block" aria-labelledby="dropdownMenuButtonCompany" ngbDropdownMenu>
+                          <a class="dropdown-item" (click)="setCustomer(userCustomer)" *ngFor="let userCustomer of userCustomers">{{userCustomer.companyName}}</a>
+                        </div>
+                      </div>
+                      <br> 
+                      <br>
+                      <div class="col-md form-group">
+                        <label for="rent-start-date-input" class="datepicker-label">Pick-Up Date:</label>
+                        <input
+                          name="rentStartDate"
+                          class="form-control datepicker"
+                          type="datetime-local"
+                          id="rent-start-date-input"
+                          formControlName="rentDate"
+                        />
+                      </div>
+                
+                      <div class="col-md form-group">
+                        <label for="rent-end-date-input" class="datepicker-label">Return Date:</label>
+                        <input
+                          name="rentEndDate"
+                          class="form-control datepicker"
+                          type="datetime-local"
+                          id="rent-end-date-input"
+                          formControlName="returnDate"
+                        />
+                      </div>
+                    </form>
+                    <br>
+                    <button (click)="rent()" class="btn btn-primary text-center" type="button">Rent</button>
+
+
+
+            </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <a href="javascript:void(0)" class="text-light">
+                <small routerLink="/cars">Check Cars</small>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+

@@ -1,48 +1,100 @@
-<div class="content">
-    <div class="col-md-12">
-        <div class="card">
-            <div class="card-header"><h5 class="title">Update {{car?.brandName}}</h5></div>
-            <div class="card-body">
-                <form [formGroup]="carUpdateForm">
-                    <div class="mb-3">
-                        <label for="brandId">Brand Id</label>
-                        <div class="form-group">
-                            <input type="number" id="brandId" formControlName="brandId" class="form-control" placeholder="Type the new Brand Id">
-                        </div>
+<main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center mb-4">
+                  <h4>Update Car ({{car?.brandName}} - {{car?.description}})</h4>
+                </div>
+                <div class="btn-wrapper text-center">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/update.png">
+                  </span>
+                </div>
+                <br>
+                <br>
+                <form role="form" [formGroup]="carUpdateForm">
+                  <div class="" ngbDropdown>
+                    <button class="btn btn-secondary dropdown-toggle block" type="button" id="dropdownMenuButtonBrand" ngbDropdownToggle>
+                      {{brand.brandName}}
+                    </button>
+                    <div class="block" aria-labelledby="dropdownMenuButtonBrand" ngbDropdownMenu>
+                      <a class="dropdown-item text-center" (click)="setBrand(brand)" *ngFor="let brand of brands">{{brand.brandName}}</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="colorId">Color Id</label>
-                        <div class="form-group">
-                            <input type="number" id="colorId" formControlName="colorId" class="form-control" placeholder="Type the new Color Id">
-                        </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="" ngbDropdown>
+                    <button class="btn btn-secondary dropdown-toggle block" type="button" id="dropdownMenuButtonColor" ngbDropdownToggle>
+                      {{color.colorName}}
+                    </button>
+                    <div class="block" aria-labelledby="dropdownMenuButtonColor" ngbDropdownMenu>
+                      <a class="dropdown-item text-center" (click)="setColor(color)" *ngFor="let color of colors">{{color.colorName}}</a>
                     </div>
-                    <div class="mb-3">
-                        <label for="modelYear">Model Year</label>
-                        <div class="form-group">
-                            <input type="number" id="modelYear" formControlName="modelYear" class="form-control" placeholder="Type the new Model Year">
-                        </div>
+                  </div>
+                  <br>
+                  <br>
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar-check"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="modelYear" placeholder="Model Year" type="number" (focus)="focus=true" (blur)="focus=false">
                     </div>
-                    <div class="mb-3">
-                        <label for="dailyPrice">Daily Price</label>
-                        <div class="form-group">
-                            <input type="number" id="dailyPrice" formControlName="dailyPrice" class="form-control" placeholder="Type the new Daily Price">
-                        </div>
+                  </div>
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-money-bill-alt"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="dailyPrice" placeholder="Daily Price" type="number" (focus)="focus1=true" (blur)="focus1=false">
                     </div>
-                    <div class="mb-3">
-                        <label for="description">Description</label>
-                        <div class="form-group">
-                            <input type="text" id="description" formControlName="description" class="form-control" placeholder="Type the new car Description">
-                        </div>
+                  </div>
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus2===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-info-circle"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="description" placeholder="Description" type="text" (focus)="focus2=true" (blur)="focus2=false">
                     </div>
-                    <div class="mb-3">
-                        <label for="minimumFindeksRating">Minimum Findeks Rating</label>
-                        <div class="form-group">
-                            <input type="number" id="minimumFindeksRating" formControlName="minimumFindeksRating" class="form-control" placeholder="Type the new Minimum Findeks Rating">
-                        </div>
+                  </div>
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus3===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-star-half-alt"></i></span>
+                      </div>
+                      <input class="form-control" min="0" max="1900" formControlName="minimumFindeksRating" placeholder="Minimum Findeks Rating" type="number" (focus)="focus3=true" (blur)="focus3=false">
                     </div>
+                  </div>
                 </form>
+
+                  <div class="text-center">
+                    <button type="button" (click)="update()" class="btn btn-primary my-4">Update</button>
+                  </div>
+              </div>
             </div>
-            <button type="button" class="btn btn-warning btn-block" (click)="update()">Update</button>
+            <div class="row mt-3">
+              <div class="col-6">
+                <a href="javascript:void(0)" class="text-light">
+                  <small routerLink="/cars">Check Cars</small>
+                </a>
+              </div>
+            </div>
+          </div>
         </div>
-    </div>
-</div>
+      </div>
+    </section>
+  </main>
+  

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
 import { AuthService } from 'src/app/services/auth.service';
+import { ToastrService } from 'ngx-toastr';
 import { StorageService } from 'src/app/services/storage.service';
 import { UserService } from 'src/app/services/user.service';
 
@@ -12,9 +12,11 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  focus:any;
+  focus1:any;
   loginForm: FormGroup
   userId:number;
-  rememberMe = false
+  rememberMe:boolean = false
   token:string
 
   constructor
@@ -54,8 +56,6 @@ export class LoginComponent implements OnInit {
 
 
   login(){
-    console.log(this.rememberMe);
-    
     if (this.loginForm.valid) {
       let loginModel = Object.assign({}, this.loginForm.value)
 
@@ -79,7 +79,8 @@ export class LoginComponent implements OnInit {
 
     } else {
       this.toastrService.warning("Please check your forms", "Warning")
+      console.log(this.loginForm.value);
+      
     }
   }
-
 }

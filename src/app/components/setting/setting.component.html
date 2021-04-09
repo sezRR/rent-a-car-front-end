@@ -1,44 +1,98 @@
-<br>
-<div class="content">
-  <div class="col-md-12">
-      <div class="card">
-          <div class="card-header"><h5 class="title">Update Settings</h5></div>
-          <div class="card-body">
-              <form [formGroup]="settingsUpdateForm">
-                  <div class="mb-3">
-                      <label for="firstName">First Name (Current: {{user?.firstName}})</label>
-                      <div class="form-group">
-                          <input type="text" id="firstName" formControlName="firstName" class="form-control" placeholder="Type the your new First Name">
+<main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="container pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="text-center mb-4">
+                  <h4>Account Details</h4>
+                </div>
+                <div class="btn-wrapper text-center">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/gears.png">
+                  </span>
+                </div>
+                <br>
+                <br>
+                <form role="form" [formGroup]="updateSettingsForm">
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span (click)="clickAction1()" class="input-group-text clickable"><i class="fas fa-address-book"></i></span>
                       </div>
+                      <input class="form-control" formControlName="firstName" placeholder="  First Name">
+                    </div>
                   </div>
-                  <div class="mb-3">
-                      <label for="lastName">Last Name (Current: {{user?.lastName}})</label>
-                      <div class="form-group">
-                          <input type="text" id="lastName" formControlName="lastName" class="form-control" placeholder="Type the your new Last Name">
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span (click)="clickAction2()" class="input-group-text clickable"><i class="fas fa-address-book"></i></span>
                       </div>
+                      <input class="form-control" formControlName="lastName" placeholder="  Last Name">
+                    </div>
                   </div>
-                  <div class="mb-3">
-                      <label for="email">E-Mail (Current: {{user?.email}})</label>
-                      <div class="form-group">
-                          <input type="email" id="email" formControlName="email" class="form-control" placeholder="Type the your new E-Mail">
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus2===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span (click)="clickAction3()" class="input-group-text clickable"><i class="ni ni-email-83"></i></span>
                       </div>
+                      <input class="form-control" formControlName="email" placeholder="  Email">
+                    </div>
                   </div>
-                  <div class="mb-3">
-                      <label for="password">New Password</label>
-                      <div class="form-group">
-                          <input type="password" id="password" formControlName="password" class="form-control" placeholder="Type the your new Password">
+                  <div class="form-group" [ngClass]="{'focused':focus3===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                          <span (click)="clickAction4()" class="input-group-text clickable"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
+                      <input class="form-control" formControlName="password" placeholder="  Password" type="password">
+                    </div>
                   </div>
                   <br>
-                  <div class="mb-3">
-                      <label for="currentPassword">Current Password</label>
-                      <div class="form-group">
-                          <input type="password" id="currentPassword" formControlName="currentPassword" class="form-control" placeholder="Type the your Current Password">
+                  <div class="form-group" [ngClass]="{'focused':focus4===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
                       </div>
+                      <input class="form-control" formControlName="currentPassword" placeholder="  Current Password">
+                    </div>
                   </div>
-              </form>
+                </form>
+  
+                  <div class="text-center">
+                    <button type="button" (click)="update()" class="btn btn-primary my-4">UPDATE</button>
+                  </div>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <a href="javascript:void(0)" class="text-light">
+                  <small>Forgot password?</small>
+                </a>
+              </div>
+            </div>
           </div>
-          <button type="button" class="btn btn-warning btn-block" (click)="update()">Update</button>
+        </div>
       </div>
-  </div>
-</div>
+    </section>
+  </main>
+  
+
+
+
+
+
+
+
+
+

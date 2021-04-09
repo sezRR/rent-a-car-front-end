@@ -1,17 +1,37 @@
-<br>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Color Name</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let color of colors">
-      <td>{{ color.id }}</td>
-      <td>{{ color.colorName }}</td>
-      <td><button routerLink = "update/{{color.id}}" type="button" class="btn btn-warning">Update</button></td>
-    </tr>
-  </tbody>
-</table>
+<section class="section section-shaped section-lg">
+  <div class="shape shape-style-1 bg-gradient-default">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+    <table class="table table-bordered text-center rentar-table">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Color Name</th>
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let color of colors">
+          <td>{{ color.id }}</td>
+          <td>{{ color.colorName }}</td>
+          <td>
+            <button routerLink = "update/{{color.id}}" type="button" class="btn btn-warning">Update</button>
+            <button (click)="delete(color)" type="button" class="btn btn-danger">Delete</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="col-2 text-left">
+      <a routerLink="/colors/add" class="text-light">
+        <small>Add new color</small>
+      </a>
+    </div>
+</section>
+

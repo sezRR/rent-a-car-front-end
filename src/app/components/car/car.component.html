@@ -1,31 +1,52 @@
-<br>
-<app-car-filter></app-car-filter>
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th>#</th>
-      <th>Brand Name</th>
-      <th>Color</th>
-      <th>Model Year</th>
-      <th>Daily Price</th>
-      <th>Description</th>
-      <th>Minumum Findeks Rating</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let car of cars">
-      <td>{{ car.id }}</td>
-      <td>{{ car.brandName }}</td>
-      <td>{{ car.colorName }}</td>
-      <td>{{ car.modelYear }}</td>
-      <td>{{ car.dailyPrice | currency}}</td>
-      <td>{{ car.description }}</td>
-      <td>{{ car.minimumFindeksRating }}</td>
-      <td>
-        <button routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-success me-md-4">View Details</button>
-        <button routerLink = "/cars/update/{{car.brandName}}/{{car.id}}" type="button" class="btn btn-secondary btn-warning">Update</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
+
+<section class="section section-shaped section-lg">
+  <div class="shape shape-style-1 bg-gradient-default">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+    <div class="myrow">
+      <div class="col-md-3">
+        <app-brand></app-brand>
+        <br>
+        <app-color></app-color>
+          </div>
+          <div class="col-md-9">
+            <app-car-filter></app-car-filter>
+            <div class="myrow">
+              <div *ngFor="let car of cars" class="col-sm-3">
+                <div class="card mystablecard">
+                  <img src="https://localhost:44371/uploads/{{car?.imagePath}}" class="card-img-top mystableimg" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">{{car?.brandName}}</h5>
+                    <p class="card-title">{{car?.description}} ({{car?.modelYear}})</p>
+                    <p class="card-text"><span class="title">Daily Price:</span> {{car?.dailyPrice | currency}}</p>
+                    <p class="card-text"><span class="title">Minimum Findeks Rating:</span> {{car?.minimumFindeksRating}}</p>
+                    <a routerLink = "/cars/brand/{{car.brandName}}/{{car.id}}" class="btn btn-primary mybtn">VIEW DETAILS</a>
+                    <a title="UPDATE THE CAR" routerLink = "/cars/update/{{car.brandName}}/{{car.id}}" class="btn btn-warning btn-sm space mybtn"><i class="fas fa-sync"></i></a>
+                    <a title="DELETE THE CAR" (click)="deleteCar(car)" class="btn btn-danger btn-sm mybtn"><i class="fas fa-trash-alt white"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+    </div>
+
+
+    
+
+
+</section>
+
+
+
+
+
+
+

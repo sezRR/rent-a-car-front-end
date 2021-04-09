@@ -12,11 +12,22 @@ import { UserService } from 'src/app/services/user.service';
   styleUrls: ['./setting.component.css']
 })
 export class SettingComponent implements OnInit {
-  settingsUpdateForm:FormGroup
+  updateSettingsForm:FormGroup
   user:User
   userId: number
   findeksRating: number
   isPasswordTrue: boolean
+
+  isClicked1:boolean = false
+  isClicked2:boolean = false
+  isClicked3:boolean = false
+  isClicked4:boolean = false
+
+  focus:any;
+  focus1:any;
+  focus2:any;
+  focus3:any;
+  focus4:any;
 
   constructor(private formBuilder:FormBuilder, private storageService:StorageService, private userService: UserService, private toastrService:ToastrService, private authService:AuthService) { }
 
@@ -42,7 +53,7 @@ export class SettingComponent implements OnInit {
   }
 
   createSettingsUpdateForm(){
-    this.settingsUpdateForm = this.formBuilder.group({
+    this.updateSettingsForm = this.formBuilder.group({
       id: [this.userId, Validators.required],
       firstName: ["", Validators.required],
       lastName: ["", Validators.required],
@@ -51,17 +62,20 @@ export class SettingComponent implements OnInit {
       findeksRating: ["", Validators.required],
       currentPassword: ["", Validators.required],
     })
+
+    this.updateSettingsForm.disable()
+    this.updateSettingsForm.get("currentPassword").enable()
   }
 
   update(){
-      this.settingsUpdateForm.patchValue({
+      this.updateSettingsForm.patchValue({
         findeksRating: this.findeksRating
       })
-      if (this.settingsUpdateForm.valid) {
+      if (this.updateSettingsForm.valid) {
 
         const userPasswordCheckConst = {
           email: this.user.email,
-          password: this.settingsUpdateForm.controls["currentPassword"].value
+          password: this.updateSettingsForm.controls["currentPassword"].value
         };
       
         let userPasswordCheckModel = Object.assign({}, userPasswordCheckConst)
@@ -70,17 +84,17 @@ export class SettingComponent implements OnInit {
 
           const userForUpdateConst = {
             id: this.userId,
-            firstName: this.settingsUpdateForm.controls["firstName"].value,
-            lastName: this.settingsUpdateForm.controls["lastName"].value,
-            email: this.settingsUpdateForm.controls["email"].value,
-            password: this.settingsUpdateForm.controls["password"].value,
+            firstName: this.updateSettingsForm.controls["firstName"].value,
+            lastName: this.updateSettingsForm.controls["lastName"].value,
+            email: this.updateSettingsForm.controls["email"].value,
+            password: this.updateSettingsForm.controls["password"].value,
             findeksRating: this.findeksRating,
           }
 
           let userModel = Object.assign({}, userForUpdateConst)
           
           this.userService.updateUser(userModel).subscribe(response =>{
-            if (this.settingsUpdateForm.controls["password"].value === this.settingsUpdateForm.controls["currentPassword"].value) {
+            if (this.updateSettingsForm.controls["password"].value === this.updateSettingsForm.controls["currentPassword"].value) {
               this.toastrService.warning("Your new password can not equal to your current (old) password.", "Warning")
               return
             }
@@ -102,4 +116,51 @@ export class SettingComponent implements OnInit {
       }
   }
 
+  clickAction1(){
+    if (this.isClicked1) {
+      this.isClicked1 = false;
+      this.updateSettingsForm.get("firstName").setValue("  First Name");
+      this.updateSettingsForm.get("firstName").disable();
+    } else {
+      this.isClicked1 = true
+      this.updateSettingsForm.get("firstName").setValue(this.user.firstName);
+      this.updateSettingsForm.get("firstName").enable();
+    }
+  }
+
+  clickAction2(){
+    if (this.isClicked2) {
+      this.isClicked2 = false;
+      this.updateSettingsForm.get("lastName").setValue("  Last Name");
+      this.updateSettingsForm.get("lastName").disable();
+    } else {
+      this.isClicked2 = true
+      this.updateSettingsForm.get("lastName").setValue(this.user.lastName);
+      this.updateSettingsForm.get("lastName").enable();
+    }
+  }
+
+  clickAction3(){
+    if (this.isClicked3) {
+      this.isClicked3 = false;
+      this.updateSettingsForm.get("email").setValue("  Email");
+      this.updateSettingsForm.get("email").disable();
+    } else {
+      this.isClicked3 = true
+      this.updateSettingsForm.get("email").setValue(this.user.email);
+      this.updateSettingsForm.get("email").enable();
+    }
+  }
+
+  clickAction4(){
+    if (this.isClicked4) {
+      this.isClicked4 = false;
+      this.updateSettingsForm.get("password").setValue("  Password");
+      this.updateSettingsForm.get("password").disable();
+    } else {
+      this.isClicked4 = true
+      this.updateSettingsForm.get("password").setValue("");
+      this.updateSettingsForm.get("password").enable();
+    }
+  }
 }

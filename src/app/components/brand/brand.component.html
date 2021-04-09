@@ -1,12 +1,12 @@
-<div class="mb-3">
-  <label for="filterTextBrand" class="form-label">Search Brand</label>
+<div class="mb-3 align top-align">
+  <label for="filterTextBrand" class="form-label text-light">Search Brand</label>
   <input type="text" [(ngModel)]="filterTextBrand" class="form-control" id="filterTextBrand" placeholder="Type the brand name">
 </div>
-<div *ngIf="filterTextBrand.length > 2" class="alert alert-info">
+<div *ngIf="filterTextBrand.length > 2" class="alert alert-primary align">
   {{filterTextBrand}} searched
 </div>
 
-<ul class="list-group">
+<ul class="list-group align">
   <li [class]="getAllBrandClass()" routerLink = "/cars">All Brands</li>
   <li (click)="setCurrentBrand(brand)" routerLink = "/cars/brand/{{brand.id}}" *ngFor="let brand of brands | filterBrand:filterTextBrand" [class]="getCurrentBrandClass(brand)">
   {{brand.brandName}}</li>

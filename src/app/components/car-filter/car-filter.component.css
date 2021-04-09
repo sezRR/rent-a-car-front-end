@@ -1,0 +1,22 @@
+.custom-select {
+  margin-left: -15px;
+  width: 333px;
+  color: rgb(77, 77, 77);
+  z-index: 1;
+}
+
+.custom-button {
+  margin-left: 105px;
+  width: 145px;
+  z-index: 1;
+}
+
+.button2 {
+  margin-left: 25px;
+  z-index: 1;
+}
+
+.button3 {
+  margin-left: -120px;
+  z-index: 1;
+}

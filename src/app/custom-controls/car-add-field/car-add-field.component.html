@@ -1,0 +1,24 @@
+<div class="form-group mb-3" [ngClass]="{ focused: focus === true }">
+    <div class="input-group input-group-alternative">
+      <div class="input-group-prepend">
+        <span class="input-group-text"><i [class]="iconClass"></i></span>
+      </div>
+      <input
+        [id]="id"
+        [placeholder]="placeholder"
+        class="form-control"
+        type="text"
+        [ngClass]="{
+          'is-invalid': errors && (focused || dirty || isNotInvalid),
+          'focused': focus === true
+        }"
+        (focus)="focus = true"
+        (blur)="focus = false"
+      />
+  
+      <div class="invalid-feedback">
+        <i class="fas fa-exclamation-circle"></i> {{ invalidMessage }}
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,109 @@
+<nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom headroom--top headroom--pinned z-index">
+  <div class="container z-index">
+    <a class="navbar-brand mr-lg-5" [routerLink]="['/']">
+      <img src="./assets/img/brand/argon-white.png">
+    </a>
+    <button class="navbar-toggler" type="button" (click)="isCollapsed = !isCollapsed"
+          [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-collapse collapse" id="navbar_global" [ngbCollapse]="isCollapsed">
+      <div class="navbar-collapse-header">
+        <div class="row">
+          <div class="col-6 collapse-brand">
+            <a [routerLink]="['/home']">
+              <img src="./assets/img/brand/blue.png">
+            </a>
+          </div>
+          <div class="col-6 collapse-close">
+            <button type="button" class="navbar-toggler" (click)="isCollapsed = !isCollapsed"
+                  [attr.aria-expanded]="!isCollapsed" aria-controls="navbar_global">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <ul class="navbar-nav navbar-nav-hover align-items-lg-center z-index">
+        <li class="nav-item">
+          <a [routerLink]="['/']" class="nav-link">
+            <span class="nav-link-inner--text z-index pointer">Home</span>
+          </a>
+        </li>
+        <li appMaintenance class="nav-item">
+          <a class="nav-link">
+            <span class="nav-link-inner--text z-index pointer">Best Deals</span>
+          </a>
+        </li>
+        <li appMaintenance class="nav-item">
+          <a class="nav-link">
+            <span class="nav-link-inner--text z-index pointer">Our Branches</span>
+          </a>
+        </li>
+        <li appMaintenance class="nav-item">
+          <a class="nav-link">
+            <span class="nav-link-inner--text z-index pointer">Contact</span>
+          </a>
+        </li>
+        <li appMaintenance class="nav-item">
+          <a class="nav-link">
+            <span class="nav-link-inner--text z-index pointer">FAQ</span>
+          </a>
+        </li>
+        <li class="nav-item dropdown z-index">
+          <a class="nav-link no-caret z-index" data-toggle="dropdown" role="button">
+            <i class="ni ni-collection d-lg-none z-index"></i>
+            <span class="nav-link-inner--text z-index">Shortcuts</span>
+          </a>
+          <div class="dropdown-menu z-index">
+            <a [routerLink]="['/brands']" class="dropdown-item z-index">Brands</a>
+            <a [routerLink]="['/colors']" class="dropdown-item z-index">Colors</a>
+            <a [routerLink]="['/cars']" class="dropdown-item z-index">Cars</a>
+          </div>
+        </li>
+      </ul>
+      
+      <ul *ngIf="isLogin" class="navbar-nav ml-lg-auto">
+        <!-- <li appMaintenance class="nav-item">
+          <a class="nav-link nav-link-icon pointer">
+            <i class="ni ni-favourite-28"></i>
+            <span class="nav-link-inner--text d-lg-none">Discover</span>
+          </a>
+        </li>
+        <li appMaintenance class="nav-item">
+          <a class="nav-link nav-link-icon pointer">
+            <i class="ni ni-notification-70"></i>
+            <span class="nav-link-inner--text d-lg-none">Profile</span>
+          </a>
+        </li> -->
+        <li class="nav-item" ngbDropdown placement="bottom-right">
+          <a class="nav-link nav-link-icon no-caret pointer" id="navbar-default_dropdown_1" ngbDropdownToggle>
+            <i class="fas fa-user"></i>
+            <span class="nav-link-inner--text z-index pointer"> {{user?.firstName}} {{user?.lastName}}</span>
+          </a>
+          <div class="dropdown-menu-right" aria-labelledby="navbar-default_dropdown_1" ngbDropdownMenu>
+            <a class="dropdown-item" routerLink="/settings"><i class="fas fa-cog"></i>Settings</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" routerLink="/brands/add"><i class="fas fa-plus-circle"></i>Add New Brand</a>
+            <a class="dropdown-item" routerLink="/colors/add"><i class="fas fa-plus-circle"></i>Add New Color</a>
+            <a class="dropdown-item" routerLink="/cars/add"><i class="fas fa-plus-circle"></i>Add New Car</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item pointer" (click)="signOut()"><i class="fas fa-sign-out-alt"></i>Sign Out</a>
+          </div>
+        </li>
+      </ul>
+
+      <ul *ngIf="isLogin === false" class="navbar-nav ml-lg-auto">
+        <div class="text-center">
+          <button type="button" class="btn btn-sm btn-primary my-4" routerLink="/signin">Sign in</button>
+          <button type="button" class="btn btn-sm btn-primary my-4" routerLink="/signup">Sign up</button>
+        </div>
+      </ul>
+
+
+
+    </div>
+  </div>
+</nav>

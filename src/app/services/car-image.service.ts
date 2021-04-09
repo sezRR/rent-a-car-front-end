@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { CarImage } from '../models/carImage';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -9,7 +10,7 @@ import { ResponseModel } from '../models/responseModel';
   providedIn: 'root'
 })
 export class CarImageService {
-  apiUrl = "https://localhost:44371/api/";
+  apiUrl = environment.apiUrl;
 
   constructor(private httpClient : HttpClient) { }
 
@@ -18,8 +19,19 @@ export class CarImageService {
     return this.httpClient.get<ListResponseModel<CarImage>>(newPath);
   }
 
-  add(carImage:CarImage): Observable<ResponseModel>{
+  add(carId:any, file:any): Observable<ResponseModel>{
     let newPath = this.apiUrl + "carimages/add"
-    return this.httpClient.post<ResponseModel>(newPath, carImage);
+
+    const uploadData = new FormData();
+    uploadData.append('carId', carId);
+    uploadData.append('file', file);
+
+    return this.httpClient.post<ResponseModel>(newPath, uploadData);
+  }
+
+  delete(id:number):Observable<ResponseModel>{
+    let newPath = this.apiUrl + "carimages/delete"
+
+    return this.httpClient.post<ResponseModel>(newPath, id)
   }
 }

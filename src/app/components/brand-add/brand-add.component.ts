@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
@@ -11,6 +11,9 @@ import { BrandService } from 'src/app/services/brand.service';
 })
 export class BrandAddComponent implements OnInit {
   brandAddForm : FormGroup;
+  focus:any
+
+  isInvalid:boolean = false
 
   constructor(private formBuilder: FormBuilder, private brandService: BrandService, private toastrService:ToastrService, private router: Router) { }
 
@@ -34,7 +37,8 @@ export class BrandAddComponent implements OnInit {
         }, 1000);
       })
     } else {
-      this.toastrService.error("Please check your brand name.", "Error");
+      // this.toastrService.warning("Please check your brand name.", "Warning");
+      this.isInvalid=true
     }
   }
 }

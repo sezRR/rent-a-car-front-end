@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Car } from '../models/car';
 import { ListResponseModel } from '../models/listResponseModel';
 import { Rental } from '../models/rental';
@@ -12,7 +13,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root'
 })
 export class RentalService {
-  apiUrl = "https://localhost:44371/api/";
+  apiUrl = environment.apiUrl;
 
   constructor(private httpClient : HttpClient) { }
 

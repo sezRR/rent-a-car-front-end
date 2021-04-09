@@ -1,0 +1,39 @@
+.rentar-table{
+    background-color: transparent;
+    color: white;
+}
+
+.myrow{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -30px;
+}
+
+.mystablecard{
+    height: 250px;
+    height: 475px;
+    margin-bottom: 25px;
+}
+
+.mystableimg{
+    height: 256px;
+    height: 192px;
+}
+
+.title{
+    color: black;
+    font-weight: 600;
+}
+
+.space{
+    margin-left: 69px;
+}
+
+.mybtn{
+    margin-top: 18px;
+    margin-bottom: 8px;
+}
+
+.white{
+    color: white;
+}

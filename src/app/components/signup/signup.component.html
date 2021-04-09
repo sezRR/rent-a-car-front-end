@@ -1,0 +1,81 @@
+<main>
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-muted text-center mb-3">
+                <h4>Sign Up</h4>
+              </div>
+              <div class="text-center">
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/signup.png">
+                  </span>
+              </div>
+              <br>
+              <br>
+              <form role="form" [formGroup]="registerForm">
+                <div class="form-group" [ngClass]="{'focused':focus===true}">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="firstName" placeholder="First Name" type="text" (focus)="focus=true" (blur)="focus=false">
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-hat-3"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="lastName" placeholder="Last Name" type="text" (focus)="focus1=true" (blur)="focus1=false">
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                  <div class="input-group input-group-alternative mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-email-83"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="email" placeholder="Email" type="email" (focus)="focus2=true" (blur)="focus2=false">
+                  </div>
+                </div>
+                <div class="form-group" [ngClass]="{'focused':focus3===true}">
+                  <div class="input-group input-group-alternative">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text"><i class="ni ni-lock-circle-open"></i></span>
+                    </div>
+                    <input class="form-control" formControlName="password" placeholder="Password" type="password" (focus)="focus3=true" (blur)="focus3=false">
+                  </div>
+                </div>
+              </form>
+                <div class="row my-4">
+                  <div class="col-12">
+                    <div class="custom-control custom-control-alternative custom-checkbox">
+                      <input name="rememberMe" [(ngModel)]="rememberMe" class="custom-control-input" id="customCheckRegister" type="checkbox">
+                      <label class="custom-control-label" for="customCheckRegister">
+                        <span>Remember Me</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="text-center">
+                  <button type="button" class="btn btn-primary mt-4" (click)="register()">Create account</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>

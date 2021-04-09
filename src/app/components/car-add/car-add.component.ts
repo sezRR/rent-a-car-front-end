@@ -2,9 +2,15 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { Brand } from 'src/app/models/brand';
+import { Car } from 'src/app/models/car';
+import { Color } from 'src/app/models/color';
+import { BrandService } from 'src/app/services/brand.service';
 import { CarImageService } from 'src/app/services/car-image.service';
 import { CarService } from 'src/app/services/car.service';
 import { ColorService } from 'src/app/services/color.service';
+declare var $: any;
+declare var jQuery: any;
 
 @Component({
   selector: 'app-car-add',
@@ -13,18 +19,86 @@ import { ColorService } from 'src/app/services/color.service';
 })
 export class CarAddComponent implements OnInit {
   carAddForm : FormGroup;
+  carImageAddForm: FormGroup
   // carImageAddForm: FormGroup
   
   // selectedFile:any = null;
 
-  isAddCar:boolean = false
   // isAddCarImage: boolean = false
 
-  constructor(private formBuilder: FormBuilder, private carService: CarService, private carImageService:CarImageService, private toastrService:ToastrService) { }
+  focus:any
+  focus1:any
+  focus2:any
+  focus3:any
+
+  brands: Brand[] = []
+  brand:Brand = {id:0,brandName:"BRANDS"}
+
+  colors: Color[] = []
+  color:Color = {id:0,colorName:"COLORS"}
+
+  carId:number
+
+  date:any
+
+  isNotInvalid:boolean = false
+  isNotInvalidButtonBrand:boolean = false
+  isNotInvalidButtonColor:boolean = false
+
+  modelYearPlaceholder:string = "Model Year"
+  modelYearIconClass:string = "fas fa-calendar-check"
+  modelYearInvalidMessage:string = "Please type the Car's Model Year"
+
+  dailyPricePlaceholder:string = "Daily Price"
+  dailyPriceIconClass:string = "fas fa-money-bill-alt"
+  dailyPriceInvalidMessage:string = "Please type the Car's Daily Price"
+
+  descriptionPlaceholder:string = "Description"
+  descriptionIconClass:string = "fas fa-info-circle"
+  descriptionInvalidMessage:string = "Please type the Car's Description"
+
+  minimumFindeksRatingPlaceholder:string = "Minimum Findeks Rating"
+  minimumFindeksRatingIconClass:string = "fas fa-star-half-alt"
+  minimumFindeksRatingInvalidMessage:string = "Please type the Car's Minimum Findeks Rating"
+
+  constructor
+  (
+    private formBuilder: FormBuilder, 
+    private carService: CarService, 
+    private carImageService:CarImageService, 
+    private toastrService:ToastrService,
+    private brandService: BrandService,
+    private colorService: ColorService,
+  ) { }
 
   ngOnInit(): void {
     this.createCarAddForm();
-    // this.createCarImageAddForm();
+    this.createCarImageAddForm();
+
+    this.getColors()
+    this.getBrands()
+  }
+
+  getColors(){
+    this.colorService.getColors().subscribe(response =>{
+      this.colors = response.data
+    })
+  }
+
+  getBrands(){
+    this.brandService.getBrands().subscribe(response =>{
+      this.brands = response.data
+    })
+  }
+
+  setBrand(brand:Brand){
+    this.brand = brand
+    this.isNotInvalidButtonBrand = false
+  }
+
+  setColor(color:Color){
+    this.color = color
+    this.isNotInvalidButtonColor = false
   }
 
   createCarAddForm(){
@@ -32,57 +106,64 @@ export class CarAddComponent implements OnInit {
       brandId: ["", Validators.required],
       colorId: ["", Validators.required],
       modelYear: ["", Validators.required],
-      dailyPrice: ["", Validators.required],
+      dailyPrice: ["", [Validators.required, Validators.min(0)]],
       description: ["", Validators.required],
-      minimumFindeksRating: ["", (Validators.required, Validators.max(1900))],
+      minimumFindeksRating: ["", [Validators.required, Validators.min(0), Validators.max(1900)]],
     })
   }
 
-  // createCarImageAddForm(){
-  //   let dateNow = new Date().toUTCString()
+  createCarImageAddForm(){
+    this.carImageAddForm = this.formBuilder.group({
+      carId: [""],
+    })
+  }
 
-  //   this.carImageAddForm = this.formBuilder.group({
-  //     carId: ["", Validators.required],
-  //     imagePath: ["", Validators.required],
-  //     date: [dateNow, Validators.required]
-  //   })
-  // }
+  addCarImage(){
+    this.carImageAddForm.get("carId").patchValue(this.carId)
 
-  // onFileSelected(event:any){
-  //   this.selectedFile = event.target.files[0];
-  // }
+    this.carImageService.add(this.carImageAddForm.get("carId").value, $('#file')[0].files[0]).subscribe(response =>{
+      this.toastrService.success("Car added", "Success");
+      setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    })
+  }
 
   add(){
-    // this.carImageAddForm.controls['carId'].setValue(parseInt(this.carId));
-    if (this.carAddForm.valid) {
+    this.carAddForm.get("brandId").patchValue(this.brand.id)
+    this.carAddForm.get("colorId").patchValue(this.color.id)
 
+    if (this.brand.id === 0 || this.color.id === 0) {
+      if (this.brand.id === 0) {
+        this.isNotInvalidButtonBrand = true
+      }
+      if (this.color.id === 0) {
+        this.isNotInvalidButtonColor = true
+      }
+
+      this.isNotInvalid = true
+      
+      return
+    }
+
+    if (this.carAddForm.valid) {
+      this.carAddForm.get("dailyPrice").patchValue(parseInt(this.carAddForm.get("dailyPrice").value))
+      this.carAddForm.get("minimumFindeksRating").patchValue(parseInt(this.carAddForm.get("minimumFindeksRating").value))
+      this.carAddForm.get("modelYear").patchValue(parseInt(this.carAddForm.get("modelYear").value))
       let carModel = Object.assign({},this.carAddForm.value)
 
-      this.carService.add(carModel).subscribe(response=>{
-        this.isAddCar = true
-        if (this.isAddCar) {
-          this.toastrService.success("Car added", "Success");   
-          setTimeout(() => {
-            window.location.reload();
-          }, 1000);
-        } else {
-          this.toastrService.error("Oops, something went wrong about car adding.", "Error")
-        }
+      this.carService.addreturnabledata(carModel).subscribe(response=>{
+        this.carId = response.data.id
+        this.addCarImage()
+      }, responseError =>{
+        this.toastrService.error(responseError.error.Message,"Error")
+        console.log(responseError);
+        console.log(this.carAddForm.value);
+        
       })
-
-      // let carImageModel = Object.assign({},this.carImageAddForm.value)
-
-      // this.carImageService.add(carImageModel).subscribe(response =>{
-      //   this.isAddCarImage = true
-      //   if (this.isAddCarImage) {
-      //     this.toastrService.success("Car Image added", "Success");   
-      //   } else {
-      //     this.toastrService.error("Oops, something went wrong about car image adding.", "Error")
-      //   }
-      // })
     } 
     else {
-      this.toastrService.error("Please check your forms.", "Error");
+      this.isNotInvalid = true
     }
   }
 }

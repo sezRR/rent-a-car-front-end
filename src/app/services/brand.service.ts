@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { Brand } from '../models/brand';
 import { ListResponseModel } from '../models/listResponseModel';
 import { ResponseModel } from '../models/responseModel';
@@ -10,7 +11,7 @@ import { SingleResponseModel } from '../models/singleResponseModel';
   providedIn: 'root'
 })
 export class BrandService {
-  apiUrl = "https://localhost:44371/api/";
+  apiUrl = environment.apiUrl;
 
   constructor(private httpClient : HttpClient) { }
 
@@ -31,6 +32,11 @@ export class BrandService {
 
   update(brand:Brand) : Observable<ResponseModel>{
     let newPath = this.apiUrl + "brands/update"
+    return this.httpClient.post<ResponseModel>(newPath, brand)
+  }
+
+  delete(brand:Brand) : Observable<ResponseModel>{
+    let newPath = this.apiUrl + "brands/delete"
     return this.httpClient.post<ResponseModel>(newPath, brand)
   }
 }

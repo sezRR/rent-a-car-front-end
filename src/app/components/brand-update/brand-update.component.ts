@@ -14,6 +14,8 @@ export class BrandUpdateComponent implements OnInit {
   brandUpdateForm:FormGroup
   brand:Brand
   
+  focus:any
+
   constructor(private brandService: BrandService, private activatedRoute:ActivatedRoute, private formBuilder:FormBuilder, private toastrService:ToastrService) { }
 
   ngOnInit(): void {
@@ -51,7 +53,7 @@ export class BrandUpdateComponent implements OnInit {
         }, 1000);
       })
     } else {
-      this.toastrService.error("Oops, something went wrong..", "Error")
+      this.toastrService.warning("Please check your forms", "Warning")
     }
   }
 }

@@ -1,82 +1,115 @@
-<br>
-<form [formGroup]="paymentForm">
-  <div class="form-group">
-    <label for="nameAndSurname">Name on Card</label>
-    <input
-      type="text"
-      class="form-control"
-      id="nameAndSurname"
-      formControlName="nameOnCard"
-      [placeholder]="nameAndSurname"
-    />
-  </div>
-  <div class="form-group">
-    <label for="cardNumber">Card Number</label>
-    <input
-      type="tel"
-      inputmode="numeric"
-      maxlength="19"
-      formControlName="cardNumberForm"
-      class="form-control"
-      id="cardNumber"
-      [placeholder]="cardNumber"
-    />
-  </div>
-  <div class="form-group">
-    <label for="cvv">CVV</label>
-    <input
-      formControlName="cvvForm"
-      type="tel"
-      inputmode="numeric"
-      maxlength="3"
-      class="form-control"
-      id="cvv"
-      [placeholder]="cvv"
-    />
-  </div>
-  <div class="form-group">
-    <label for="expirationDate">Expiration Date</label>
-    <div id="expiration-date-input" class="input-group">
-      <input
-        type="number"
-        formControlName="monthForm"
-        class="form-control"
-        [placeholder]="monthForm"
-        max="12"
-      />
-      <span class="input-group-text">/</span>
-      <input
-        type="number"
-        formControlName="monthYear"
-        class="form-control"
-        [placeholder]="yearForm"
-        max="2031"
-      />
-    </div>
-  </div>
-  <br>
-  <button (click)="pay()" type="button" class="btn btn-primary">Pay</button>
-  <button [hidden]="true" id="openModal" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Pay</button>
-</form>
-
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel">
-    <div class="modal-dialog">
-      <div class="modal-content">
-
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Payment Informations</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body">
-          Do you want save your credit card informations for next payment to do easily this section ?
-        </div>
-
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-danger" data-bs-dismiss="modal">No</button>
-          <button type="button" class="btn btn-success" (click)="savePaymentInformation()" data-bs-dismiss="modal">Yes</button>
-        </div>
-
+ <main>
+    <section class="section section-shaped section-lg">
+      <div class="shape shape-style-1 bg-gradient-default">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </div>
-    </div>
-  </div>
+      <div class="container pt-lg-md">
+        <div class="row justify-content-center">
+          <div class="col-lg-5">
+            <div class="card bg-secondary shadow border-0">
+              <div class="card-body px-lg-5 py-lg-5">
+                <div class="btn-wrapper text-center">
+                  <div class="text-center mb-4">
+                    <h4>Payment</h4>
+                  </div>
+                  <span class="btn-inner--icon">
+                    <img src="./assets/img/icons/common/payment.png">
+                  </span>
+                  <br>
+                  <br>
+                </div>
+
+                <div *ngIf="cards.length > 0" class="" ngbDropdown>
+                  <button class="btn btn-secondary dropdown-toggle block" type="button" id="dropdownMenuButtonBrand" ngbDropdownToggle>
+                    {{currentCard}}
+                  </button>
+
+                  <div class="block" aria-labelledby="dropdownMenuButtonBrand" ngbDropdownMenu>        
+                      <a (click)="setCurrentCard(card)" *ngFor="let card of cards" class="dropdown-item text-center">{{card.showableCard}} <button (click)="deleteCurrentCard(card)" type="button" class="btn btn-danger btn-sm space2">Delete</button> </a>
+                  </div>
+                </div>
+                <button (click)="clearCurrentCard()" *ngIf="isCardSelected" type="button" class="btn btn-warning btn-sm">Clear</button>
+                <br>
+                <br>
+                <form role="form" [formGroup]="paymentForm">
+                  <div class="form-group mb-3" [ngClass]="{'focused':focus===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-address-card"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="nameOnCard" placeholder="Name On Card" type="text" (focus)="focus=true" (blur)="focus=false">
+                    </div>
+                  </div>
+
+                  <div class="form-group" [ngClass]="{'focused':focus1===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-credit-card"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="cardNumberForm" placeholder="Card Number" type="tel" inputmode="numeric" (focus)="focus1=true" (blur)="focus1=false">
+                    </div>
+                  </div>
+
+                  <div class="form-group" [ngClass]="{'focused':focus2===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-key"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="cvvForm" placeholder="CVV" type="tel" inputmode="numeric" (focus)="focus2=true" (blur)="focus2=false">
+                    </div>
+                  </div>
+
+                  <div class="form-group" [ngClass]="{'focused':focus3===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="monthForm" placeholder="Expiration Date (Month)" type="number" (focus)="focus3=true" (blur)="focus3=false">
+                    </div>
+                  </div>
+
+                  <div class="form-group" [ngClass]="{'focused':focus4===true}">
+                    <div class="input-group input-group-alternative">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="fas fa-calendar"></i></span>
+                      </div>
+                      <input class="form-control" formControlName="monthYear" placeholder="Expiration Date (Year)" type="number" (focus)="focus4=true" (blur)="focus4=false">
+                    </div>
+                  </div>
+                  
+                </form>
+                <div *ngIf="!(isCardSelected)" class="custom-control custom-control-alternative custom-checkbox">
+
+                    <input class="custom-control-input" name="rememberMyCreditCard" [(ngModel)]="rememberMyCreditCard" id="customCheckPayment" type="checkbox">
+                    <label class="custom-control-label" for="customCheckPayment">
+                      <span>Remember my card</span>
+                    </label>
+
+                    <span class="badge badge-info space2" placement="right" ngbTooltip="Your credit card informations are going to be save your device local storage if you select this check box. We never save your credit card informations to our databases.">?</span>
+
+                </div>
+                <br>
+                  <br>
+                  <button (click)="pay()" type="button" class="btn btn-primary">Pay</button>
+              </div>
+            </div>
+            <div class="row mt-3">
+              <div class="col-6">
+                <a href="javascript:void(0)" class="text-light">
+                  <small>Cancel</small>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  

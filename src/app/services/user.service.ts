@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 import { ListResponseModel } from '../models/listResponseModel';
 import { RegisterModel } from '../models/registerModel';
 import { ResponseModel } from '../models/responseModel';
@@ -12,27 +13,27 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class UserService {
-  apiUrl = "https://localhost:44371/api/users/";
+  apiUrl = environment.apiUrl;
 
   constructor(private httpClient: HttpClient) { }
 
   getUserByMail(email:string) : Observable<SingleResponseModel<User>>{
-    let newPath = this.apiUrl + "getbymail?email="
+    let newPath = this.apiUrl + "users/getbymail?email="
     return this.httpClient.get<SingleResponseModel<User>>(newPath + email)
   }
 
   getUsersByFindeksRating(findeksRating:number) : Observable<ListResponseModel<User>>{
-    let newPath = this.apiUrl + "getuserfindeksrating?findeksRating=" + findeksRating
+    let newPath = this.apiUrl + "users/getuserfindeksrating?findeksRating=" + findeksRating
     return this.httpClient.get<ListResponseModel<User>>(newPath)
   }
 
   getUserById(id:number) : Observable<SingleResponseModel<User>>{
-    let newPath = this.apiUrl + "getuserbyid?id="+id
+    let newPath = this.apiUrl + "users/getuserbyid?id="+id
     return this.httpClient.get<SingleResponseModel<User>>(newPath)
   }
 
   updateUser(user:UpdateUserModel) : Observable<ResponseModel>{
-    let newPath = this.apiUrl + "update"
+    let newPath = this.apiUrl + "users/update"
     return this.httpClient.post<ResponseModel>(newPath, user)
   }
 }
