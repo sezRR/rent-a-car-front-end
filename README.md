@@ -14,8 +14,6 @@
  <img width="100px" src="https://www.seekpng.com/png/full/419-4199738_final-product-image-isometric-car-illustration-png.png" align="center" alt="GitHub Readme Stats" />
  <h2 align="center">RENTAR (RENT CAR) - FRONTEND</h2>
 
- #
-
  <p align="center">Rentar 'Frontend' project with Angular</p>
  <p align="center">Click for <a href="https://github.com/sezRR/ReCapProject">The Backend</a></p>
 </p>
