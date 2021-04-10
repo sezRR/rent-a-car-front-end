@@ -33,7 +33,7 @@
 <br>
 
 ### Home Page
-<img src="https://i.hizliresim.com/5tcxJb.png">
+<img src="https://i.hizliresim.com/bmLkgE.png">
 
 <br>
 <br>
