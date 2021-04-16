@@ -33,14 +33,14 @@
 <br>
 
 ### Home Page
-<img src="https://i.hizliresim.com/SxgcN2.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_1.png">
 
 <br>
 <br>
 <br>
 
 ### Cars Page
-<img src="https://i.hizliresim.com/cXdfSQ.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_2.png">
 
 <br>
 <br>
@@ -54,14 +54,14 @@
 <br>
 
 ### Brands Page
-<img src="https://i.hizliresim.com/lLcQtv.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_3.png">
 
 <br>
 <br>
 <br>
 
 ### Car Details Page
-<img src="https://i.hizliresim.com/WR2HnA.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_4.png">
 
 
 <br>
@@ -72,7 +72,7 @@
 
 # Features
 ### Custom Form Validation
-<img src="https://i.hizliresim.com/J0VHXI.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_5.png">
 
 <br>
 <br>
@@ -86,14 +86,14 @@
 <br>
 
 ### Sign Up Page (Remember Me Feature)
-<img src="https://i.hizliresim.com/lTlOMi.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_6.png">
 
 <br>
 <br>
 <br>
 
 ### Rememberable Cards Feature
-<img src="https://i.hizliresim.com/yoQ1DA.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_7.png">
 
 <br>
 <br>
@@ -119,32 +119,32 @@
 
 # Pages (Adding)
 ### Color Adding Page
-<img src="https://i.hizliresim.com/ZFZ1fA.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_8.png">
 
 <br>
 <br>
 <br>
 
 ### Brand Adding Page
-<img src="https://i.hizliresim.com/tgQ9hH.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_9.png">
 
 <br>
 <br>
 <br>
 
 ### Car Adding Page
-<img src="https://i.hizliresim.com/U3nWgC.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_10.png">
 
 <br>
 <br>
 <br>
 
 ### Account Settings Page
-<img src="https://i.hizliresim.com/Ikd5l2.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_11.png">
 
 <br>
 <br>
 <br>
 
 ### Payment Page
-<img src="https://i.hizliresim.com/Rl0i5Q.png">
+<img src="https://raw.githubusercontent.com/sezRR/rent-a-car-front-end/main/src/assets/img/theme/Screenshot_12.png">
