@@ -33,14 +33,14 @@
 <br>
 
 ### Home Page
-<img src="https://i.hizliresim.com/bmLkgE.png">
+<img src="https://i.hizliresim.com/SxgcN2.png">
 
 <br>
 <br>
 <br>
 
 ### Cars Page
-<img src="https://i.hizliresim.com/2j7yWV.png">
+<img src="https://i.hizliresim.com/cXdfSQ.png">
 
 <br>
 <br>
@@ -54,14 +54,14 @@
 <br>
 
 ### Brands Page
-<img src="https://i.hizliresim.com/4JYHjL.png">
+<img src="https://i.hizliresim.com/lLcQtv.png">
 
 <br>
 <br>
 <br>
 
 ### Car Details Page
-<img src="https://i.hizliresim.com/7AJb6l.png">
+<img src="https://i.hizliresim.com/WR2HnA.png">
 
 
 <br>
@@ -72,7 +72,7 @@
 
 # Features
 ### Custom Form Validation
-<img src="https://i.hizliresim.com/eKOKFx.png">
+<img src="https://i.hizliresim.com/J0VHXI.png">
 
 <br>
 <br>
@@ -86,14 +86,14 @@
 <br>
 
 ### Sign Up Page (Remember Me Feature)
-<img src="https://i.hizliresim.com/FhwGVw.png">
+<img src="https://i.hizliresim.com/lTlOMi.png">
 
 <br>
 <br>
 <br>
 
 ### Rememberable Cards Feature
-<img src="https://i.hizliresim.com/fH8jtE.png">
+<img src="https://i.hizliresim.com/yoQ1DA.png>
 
 <br>
 <br>
@@ -119,32 +119,32 @@
 
 # Pages (Adding)
 ### Color Adding Page
-<img src="https://i.hizliresim.com/0Mw4rA.png">
+<img src="https://i.hizliresim.com/ZFZ1fA.png">
 
 <br>
 <br>
 <br>
 
 ### Brand Adding Page
-<img src="https://i.hizliresim.com/d23rbY.png">
+<img src="https://i.hizliresim.com/tgQ9hH.png">
 
 <br>
 <br>
 <br>
 
 ### Car Adding Page
-<img src="https://i.hizliresim.com/WuDHZw.png">
+<img src="https://i.hizliresim.com/U3nWgC.png">
 
 <br>
 <br>
 <br>
 
 ### Account Settings Page
-<img src="https://i.hizliresim.com/o22cC4.png">
+<img src="https://i.hizliresim.com/Ikd5l2.png">
 
 <br>
 <br>
 <br>
 
 ### Payment Page
-<img src="https://i.hizliresim.com/eHpMYi.png">
+<img src="https://i.hizliresim.com/Rl0i5Q.png">
