@@ -93,7 +93,7 @@
 <br>
 
 ### Rememberable Cards Feature
-<img src="https://i.hizliresim.com/yoQ1DA.png>
+<img src="https://i.hizliresim.com/yoQ1DA.png">
 
 <br>
 <br>
