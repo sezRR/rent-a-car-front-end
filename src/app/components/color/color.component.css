@@ -1,5 +1,11 @@
 .align{
     width: 250px;
-    margin-left: auto;
-    margin-right: auto;
+    margin-left: 5rem;
+    padding-right: -15px;
+}
+
+.top-align{
+    width: 250px;
+    margin-top: -30px;
+    margin-left: 5rem;
 }

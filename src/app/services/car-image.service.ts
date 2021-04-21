@@ -30,8 +30,8 @@ export class CarImageService {
   }
 
   delete(id:number):Observable<ResponseModel>{
-    let newPath = this.apiUrl + "carimages/delete"
+    let newPath = this.apiUrl + "carimages/delete?id="+id
 
-    return this.httpClient.post<ResponseModel>(newPath, id)
+    return this.httpClient.post<ResponseModel>(newPath, null)
   }
 }

@@ -1,14 +1,14 @@
 
 <div class="row">
     <div class="col-2 col-sm-3" ngbDropdown>
-        <select class="btn dropdown-toggle custom-select" [ngModel]="brandFilter" (ngModelChange)="onChangeBrandFilter($event)" aria-labelledby="dropdownMenuButton" ngbDropdownToggle>
+        <select class="btn dropdown-toggle custom-select space-1" [ngModel]="brandFilter" (ngModelChange)="onChangeBrandFilter($event)" aria-labelledby="dropdownMenuButton" ngbDropdownToggle>
             <option value="0">Filter for the Brands</option>
           <option class="dropdown-item" *ngFor="let brand of brands" [value]="brand.id">{{brand.brandName}}</option>
         </select>
     </div>
 
     <div class="col-2" ngbDropdown>
-        <select class="btn btn-secondary dropdown-toggle custom-select" [ngModel]="colorFilter" (ngModelChange)="onChangeColorFilter($event)" aria-labelledby="dropdownMenuButton" ngbDropdownToggle>
+        <select class="btn btn-secondary dropdown-toggle custom-select space-2" [ngModel]="colorFilter" (ngModelChange)="onChangeColorFilter($event)" aria-labelledby="dropdownMenuButton" ngbDropdownToggle>
             <option value="0">Filter for the Colors</option>
           <option class="dropdown-item" *ngFor="let color of colors" [value]="color.id">{{color.colorName}}</option>
         </select>

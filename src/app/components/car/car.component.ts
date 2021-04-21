@@ -40,18 +40,16 @@ export class CarComponent implements OnInit {
     this.carImageService.getImagesByCarId(car.id).subscribe(response =>{
       this.carImages = response.data
 
-      for (let i = 0; i < this.carImages.length; i++) {
-        this.carImageService.delete(this.carImages[i].carId).subscribe(response=>{
-          this.toastrService.success(i + 1 + ". Photo's of Car deleted.")
-        }).unsubscribe
-      }
-
-      this.carService.delete(car).subscribe(response =>{
-        this.toastrService.success(response.message,"Success")
-        setTimeout(() => {
-          window.location.reload();
-        }, 1000);
+      this.carImageService.delete(this.carImages[0].carId).subscribe(response=>{
+        this.carService.delete(car).subscribe(response =>{
+          this.toastrService.success(response.message,"Success")
+          setTimeout(() => {
+            window.location.reload();
+          }, 1000);
+        })
       })
+
+
     })
   }
 

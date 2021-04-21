@@ -10,13 +10,10 @@
 }
 
 .mystablecard{
-    height: 250px;
-    height: 475px;
     margin-bottom: 25px;
 }
 
 .mystableimg{
-    height: 256px;
     height: 192px;
 }
 
@@ -26,7 +23,7 @@
 }
 
 .space{
-    margin-left: 69px;
+    margin-left: 24px;
 }
 
 .mybtn{
@@ -37,3 +34,13 @@
 .white{
     color: white;
 }
+
+.col-md-6 {
+    flex: 0 0 53%;
+    max-width: 53%;
+}
+
+/* .col-md-3 {
+    flex: 0 0 12%;
+    max-width: 12%;
+} */

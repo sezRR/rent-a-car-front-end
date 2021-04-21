@@ -1,14 +1,16 @@
-<div class="mb-3 align">
+<div class="mb-3 top-align">
   <label for="filterTextColor" class="form-label text-light">Search Color</label>
-  <input type="text" [(ngModel)]="filterTextColor" class="form-control" id="filterTextColor" placeholder="Type the color name">
+  <input type="text" [(ngModel)]="filterTextColor" class="form-control" id="filterTextColor"
+    placeholder="Type the color name" />
 </div>
 <div *ngIf="filterTextColor.length > 2" class="alert alert-primary align">
-  {{filterTextColor}} searched
+  {{ filterTextColor }} searched
 </div>
 
 <ul class="list-group align">
-  <li [class]="getAllColorClass()" routerLink = "/cars">All Colors</li>
-  <li (click)="setCurrentColor(color)" routerLink = "/cars/color/{{color.id}}" *ngFor="let color of colors | filterColor:filterTextColor" [class]="getCurrentColorClass(color)">
-  {{color.colorName}}</li>
+  <li [class]="getAllColorClass()" routerLink="/cars">All Colors</li>
+  <li (click)="setCurrentColor(color)" routerLink="/cars/color/{{ color.id }}"
+    *ngFor="let color of colors | filterColor: filterTextColor" [class]="getCurrentColorClass(color)">
+    {{ color.colorName }}
+  </li>
 </ul>
-<br>

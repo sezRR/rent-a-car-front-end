@@ -1,22 +1,31 @@
 .custom-select {
-  margin-left: -15px;
-  width: 333px;
+  width: 315px;
   color: rgb(77, 77, 77);
   z-index: 1;
 }
 
+.space-1{
+  margin-left: -15px;
+}
+
+.space-2{
+  margin-left: 72px;
+}
+
 .custom-button {
-  margin-left: 105px;
-  width: 145px;
+  margin-left: 240px;
+  height: 48px;
   z-index: 1;
 }
 
 .button2 {
-  margin-left: 25px;
+  margin-left: 192px;
+  height: 48px;
   z-index: 1;
 }
 
 .button3 {
-  margin-left: -120px;
+  margin-left: 128px;
+  height: 48px;
   z-index: 1;
 }
