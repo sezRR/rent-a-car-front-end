@@ -45,7 +45,7 @@ export class CarService {
     return this.httpClient.post<ResponseModel>(newPath, car)
   }
 
-  addreturnabledata(car:Car):Observable<SingleResponseModel<Car>>{
+  addReturnableData(car:Car):Observable<SingleResponseModel<Car>>{
     let newPath = this.apiUrl + "cars/addreturnabledata"
     return this.httpClient.post<SingleResponseModel<Car>>(newPath, car)
   }

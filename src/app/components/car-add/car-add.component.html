@@ -1,76 +1,198 @@
 <main>
-    <section class="section section-shaped section-lg">
-      <div class="shape shape-style-1 bg-gradient-default">
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <div class="container pt-lg-md">
-        <div class="row justify-content-center">
-          <div class="col-lg-5">
-            <div class="card bg-secondary shadow border-0">
-              <div class="card-body px-lg-5 py-lg-5">
-                <div class="text-center mb-4">
-                  <h4>Add New Car</h4>
-                </div>
-                <div class="btn-wrapper text-center">
-                  <span class="btn-inner--icon">
-                    <img src="./assets/img/icons/common/car.png">
-                  </span>
-                </div>
-                <br>
-                <br>
-                <form role="form" [formGroup]="carAddForm">
-                  <div ngbDropdown>
-                    <button class="btn btn-secondary dropdown-toggle block" [ngClass]="{'invalid-button': isNotInvalidButtonBrand}" type="button" id="dropdownMenuButtonBrand" ngbDropdownToggle>
-                      {{brand.brandName}}
-                    </button>
-                    <div class="block" aria-labelledby="dropdownMenuButtonBrand" ngbDropdownMenu>
-                      <a class="dropdown-item text-center" (click)="setBrand(brand)" *ngFor="let brand of brands">{{brand.brandName}}</a>
-                    </div>
+  <section class="section section-shaped section-lg">
+    <div class="shape shape-style-1 bg-gradient-default">
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+    <div class="container pt-lg-md">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card bg-secondary shadow border-0">
+            <div class="card-body px-lg-5 py-lg-5">
+              <div class="text-center mb-4">
+                <h4>Add New Car</h4>
+              </div>
+              <div class="btn-wrapper text-center">
+                <span class="btn-inner--icon">
+                  <img src="./assets/img/icons/common/car.png" />
+                </span>
+              </div>
+              <br />
+              <br />
+              <form role="form" [formGroup]="carAddForm">
+                <div ngbDropdown>
+                  <button
+                    class="btn btn-secondary dropdown-toggle block"
+                    [ngClass]="{ 'invalid-button': isNotInvalidButtonBrand }"
+                    type="button"
+                    id="dropdownMenuButtonBrand"
+                    ngbDropdownToggle
+                  >
+                    {{ brand.brandName }}
+                  </button>
+                  <div
+                    class="block"
+                    aria-labelledby="dropdownMenuButtonBrand"
+                    ngbDropdownMenu
+                  >
+                    <a
+                      class="dropdown-item text-center"
+                      (click)="setBrand(brand)"
+                      *ngFor="let brand of brands"
+                      >{{ brand.brandName }}</a
+                    >
                   </div>
-                  <br>
-                  <br>
-                  <div ngbDropdown>
-                    <button class="btn btn-secondary dropdown-toggle block" [ngClass]="{'invalid-button': isNotInvalidButtonColor}" type="button" id="dropdownMenuButtonColor" ngbDropdownToggle>
-                      {{color.colorName}}
-                    </button>
-                    <div class="block" aria-labelledby="dropdownMenuButtonColor" ngbDropdownMenu>
-                      <a class="dropdown-item text-center" (click)="setColor(color)" *ngFor="let color of colors">{{color.colorName}}</a>
-                    </div>
+                </div>
+                <br />
+                <br />
+                <div ngbDropdown>
+                  <button
+                    class="btn btn-secondary dropdown-toggle block"
+                    [ngClass]="{ 'invalid-button': isNotInvalidButtonColor }"
+                    type="button"
+                    id="dropdownMenuButtonColor"
+                    ngbDropdownToggle
+                  >
+                    {{ color.colorName }}
+                  </button>
+                  <div
+                    class="block"
+                    aria-labelledby="dropdownMenuButtonColor"
+                    ngbDropdownMenu
+                  >
+                    <a
+                      class="dropdown-item text-center"
+                      (click)="setColor(color)"
+                      *ngFor="let color of colors"
+                      >{{ color.colorName }}</a
+                    >
                   </div>
-                  <br>
-                  <br>
-                  <app-car-add-field formControlName="modelYear" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['modelYear'].errors" [focused]="carAddForm.controls['modelYear'].touched" [dirty]="carAddForm.controls['modelYear'].dirty" [placeholder]="modelYearPlaceholder" [iconClass]="modelYearIconClass" [invalidMessage]="modelYearInvalidMessage"></app-car-add-field>
-                  <app-car-add-field formControlName="dailyPrice" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['dailyPrice'].errors" [focused]="carAddForm.controls['dailyPrice'].touched" [dirty]="carAddForm.controls['dailyPrice'].dirty" [placeholder]="dailyPricePlaceholder" [iconClass]="dailyPriceIconClass" [invalidMessage]="dailyPriceInvalidMessage"></app-car-add-field>
-                  <app-car-add-field formControlName="description" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['description'].errors" [focused]="carAddForm.controls['description'].touched" [dirty]="carAddForm.controls['description'].dirty" [placeholder]="descriptionPlaceholder" [iconClass]="descriptionIconClass" [invalidMessage]="descriptionInvalidMessage"></app-car-add-field>
-                  <app-car-add-field formControlName="minimumFindeksRating" [isNotInvalid]="isNotInvalid" [errors]="carAddForm.controls['minimumFindeksRating'].errors" [focused]="carAddForm.controls['minimumFindeksRating'].touched" [dirty]="carAddForm.controls['minimumFindeksRating'].dirty" [placeholder]="minimumFindeksRatingPlaceholder" [iconClass]="minimumFindeksRatingIconClass" [invalidMessage]="minimumFindeksRatingInvalidMessage"></app-car-add-field>
+                </div>
+                <br />
+                <br />
+                <app-car-add-field
+                  formControlName="modelYear"
+                  [isNotInvalid]="isNotInvalid"
+                  [errors]="carAddForm.controls['modelYear'].errors"
+                  [focused]="carAddForm.controls['modelYear'].touched"
+                  [dirty]="carAddForm.controls['modelYear'].dirty"
+                  [placeholder]="modelYearPlaceholder"
+                  [iconClass]="modelYearIconClass"
+                  [invalidMessage]="modelYearInvalidMessage"
+                ></app-car-add-field>
+                <app-car-add-field
+                  formControlName="dailyPrice"
+                  [isNotInvalid]="isNotInvalid"
+                  [errors]="carAddForm.controls['dailyPrice'].errors"
+                  [focused]="carAddForm.controls['dailyPrice'].touched"
+                  [dirty]="carAddForm.controls['dailyPrice'].dirty"
+                  [placeholder]="dailyPricePlaceholder"
+                  [iconClass]="dailyPriceIconClass"
+                  [invalidMessage]="dailyPriceInvalidMessage"
+                ></app-car-add-field>
+                <app-car-add-field
+                  formControlName="description"
+                  [isNotInvalid]="isNotInvalid"
+                  [errors]="carAddForm.controls['description'].errors"
+                  [focused]="carAddForm.controls['description'].touched"
+                  [dirty]="carAddForm.controls['description'].dirty"
+                  [placeholder]="descriptionPlaceholder"
+                  [iconClass]="descriptionIconClass"
+                  [invalidMessage]="descriptionInvalidMessage"
+                ></app-car-add-field>
+                <app-car-add-field
+                  formControlName="minimumFindeksRating"
+                  [isNotInvalid]="isNotInvalid"
+                  [errors]="carAddForm.controls['minimumFindeksRating'].errors"
+                  [focused]="
+                    carAddForm.controls['minimumFindeksRating'].touched
+                  "
+                  [dirty]="carAddForm.controls['minimumFindeksRating'].dirty"
+                  [placeholder]="minimumFindeksRatingPlaceholder"
+                  [iconClass]="minimumFindeksRatingIconClass"
+                  [invalidMessage]="minimumFindeksRatingInvalidMessage"
+                ></app-car-add-field>
 
-                  <form role="form" [formGroup]="carImageAddForm">
-                    <input type="file" id="file" name="file"><br><br>
-                  </form>
+                <form role="form" [formGroup]="carImageAddForm">
+                  <div *ngIf="file === null && files === null">
+                    <label for="file" class="custom-file-upload">
+                      <i class="fa fa-cloud-upload-alt margin-with-text"></i
+                      >Choose File(s)
+                    </label>
+                    <input
+                      id="file"
+                      type="file"
+                      accept="image/*"
+                      multiple="true"
+                      (change)="fileValueChange($event)"
+                    />
+                  </div>
+
+                  <div *ngIf="file || files">
+                    <label
+                      *ngIf="file"
+                      for="file-delete"
+                      class="custom-file-delete"
+                    >
+                      <i class="fa fa-trash-alt margin-with-text"></i>Remove
+                      File
+                    </label>
+                    <label
+                      *ngIf="files"
+                      for="file-delete"
+                      class="custom-file-delete"
+                    >
+                      <i class="fa fa-trash-alt margin-with-text"></i>Remove
+                      Files
+                    </label>
+                    <input
+                      id="file-delete"
+                      type="button"
+                      (click)="fileValueChange(null)"
+                    />
+                    <br />
+                    <div *ngIf="files">
+                      <label
+                        *ngFor="let myFile of files"
+                        class="margin-with-text-2 custom-label"
+                        >{{ myFile.name }}</label
+                      >
+                    </div>
+                    <div *ngIf="file">
+                      <label class="margin-with-text-2 custom-label">{{
+                        file.name
+                      }}</label>
+                    </div>
+                  </div>
                 </form>
+              </form>
 
-                  <div class="text-center">
-                    <button type="button" (click)="add()" class="btn btn-primary my-4">Add</button>
-                  </div>
+              <div class="text-center">
+                <button
+                  type="button"
+                  (click)="add()"
+                  class="btn btn-primary my-4"
+                >
+                  Add
+                </button>
               </div>
             </div>
-            <div class="row mt-3">
-              <div class="col-6">
-                <a href="javascript:void(0)" class="text-light">
-                  <small routerLink="/cars">Check Cars</small>
-                </a>
-              </div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-6">
+              <a href="javascript:void(0)" class="text-light">
+                <small routerLink="/cars">Check Cars</small>
+              </a>
             </div>
           </div>
         </div>
       </div>
-    </section>
-  </main>
-  
+    </div>
+  </section>
+</main>

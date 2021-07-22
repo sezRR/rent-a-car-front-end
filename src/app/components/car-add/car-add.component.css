@@ -17,3 +17,48 @@
   border:solid red;
   border-width: 1px;
 }
+
+input[type="file"] {
+  display: none;
+}
+
+input[type="button"] {
+  display: none;
+}
+
+.custom-file-upload {
+  border: 1px solid #ccc;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.custom-file-upload:hover{
+  background-color: #ddd;
+}
+
+.custom-file-delete {
+  border: 1px solid rgb(230, 0, 0);
+  background-color: red;
+  color: white;
+  display: inline-block;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.custom-file-delete:hover {
+  background-color: rgb(200, 0, 0);
+  color: rgb(230, 230, 230);
+}
+
+.margin-with-text{
+  margin-right: 0.45rem;
+}
+
+.margin-with-text-2{
+  margin-left: 0.45rem;
+}
+
+.custom-label{
+  font-weight: 600;
+}

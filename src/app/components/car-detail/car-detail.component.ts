@@ -27,34 +27,34 @@ export class CarDetailComponent implements OnInit {
   rentDate: Date = this.DateTimeNow;
   returnDate: Date = this.DateTimeNow;
 
-  userList:User[] = []
-  isEnough:boolean = false
+  userList: User[] = []
+  isEnough: boolean = false
 
   identityId: number
   userCustomers: Customer[] = []
 
-  rentForm:FormGroup
+  rentForm: FormGroup
 
-  customer:Customer = {id:0,userId:0,companyName:"COMPANIES"}
+  customer: Customer = { id: 0, userId: 0, companyName: "COMPANIES" }
 
-  carImages:CarImage[] = []
+  carImages: CarImage[] = []
 
   constructor
-  (
-    private carService:CarService, 
-    private activatedRoute: ActivatedRoute, 
-    private rentalService: RentalService,
-    private router: Router, 
-    private toastrService:ToastrService, 
-    private userService: UserService,
-    private storageService:StorageService,
-    private formBuilder:FormBuilder,
-    private customerService:CustomerService,
-    private carImageService:CarImageService
-  ) { }
+    (
+      private carService: CarService,
+      private activatedRoute: ActivatedRoute,
+      private rentalService: RentalService,
+      private router: Router,
+      private toastrService: ToastrService,
+      private userService: UserService,
+      private storageService: StorageService,
+      private formBuilder: FormBuilder,
+      private customerService: CustomerService,
+      private carImageService: CarImageService
+    ) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
+    this.activatedRoute.params.subscribe(params => {
       this.getCarDetails(params["id"])
       this.getCarImages(params["id"])
       this.checkLogin()
@@ -62,7 +62,7 @@ export class CarDetailComponent implements OnInit {
     }).unsubscribe()
   }
 
-  createRentForm(){
+  createRentForm() {
     this.rentForm = this.formBuilder.group({
       carId: ["", Validators.required],
       userId: ["", Validators.required],
@@ -71,49 +71,49 @@ export class CarDetailComponent implements OnInit {
     })
   }
 
-  setCustomer(userCustomer:Customer){
+  setCustomer(userCustomer: Customer) {
     this.customer = userCustomer
   }
 
-  getCarImages(carId:number){
-    this.carImageService.getImagesByCarId(carId).subscribe(response =>{
+  getCarImages(carId: number) {
+    this.carImageService.getImagesByCarId(carId).subscribe(response => {
       this.carImages = response.data
     })
   }
 
-  getCarDetails(carId:number){
-    this.carService.getCarById(carId).subscribe(response =>{
+  getCarDetails(carId: number) {
+    this.carService.getCarById(carId).subscribe(response => {
       this.car = response.data;
     })
   }
 
-  isRentable(rental:Rental){
+  isRentable(rental: Rental) {
     this.rentalService.isRentable(rental).subscribe(response => {
-      if (response.success != true){
+      if (response.success != true) {
         return
       }
       this.rentableCar = rental
     })
   }
 
-  findeksRatingGet(findeksRating:number){
-    this.userService.getUsersByFindeksRating(findeksRating).subscribe(response =>{
+  findeksRatingGet(findeksRating: number) {
+    this.userService.getUsersByFindeksRating(findeksRating).subscribe(response => {
       this.userList = response.data
       this.findeksRatingCheck();
     })
   }
 
-  getCustomersByUserId(userId:number){
-    this.customerService.getCustomersByUserId(userId).subscribe(response=>{
+  getCustomersByUserId(userId: number) {
+    this.customerService.getCustomersByUserId(userId).subscribe(response => {
       this.userCustomers = response.data
     })
   }
 
-  checkLogin(){
+  checkLogin() {
     if (this.storageService.getFromLocal("rememberMe") === "true") {
       this.identityId = parseInt(this.storageService.getFromLocal("identityId"))
       this.getCustomersByUserId(this.identityId)
-    } else if (this.storageService.getFromSession("rememberMe") === "false"){
+    } else if (this.storageService.getFromSession("rememberMe") === "false") {
       this.identityId = parseInt(this.storageService.getFromSession("identityId"))
       this.getCustomersByUserId(this.identityId)
     } else {
@@ -124,22 +124,22 @@ export class CarDetailComponent implements OnInit {
 
 
 
-  findeksRatingCheck(){
-    if (this.userList.length === 0) {   
+  findeksRatingCheck() {
+    if (this.userList.length === 0) {
       return
     }
 
-      this.userList.forEach(user => {
-        if (user.id === this.identityId) {
-          this.isEnough = true
-          return
-        } else {
-          return
-        }
-      });
+    this.userList.forEach(user => {
+      if (user.id === this.identityId) {
+        this.isEnough = true
+        return
+      } else {
+        return
+      }
+    });
   }
 
-  rent(){
+  rent() {
     this.findeksRatingGet(this.car.minimumFindeksRating)
 
     if (this.customer.id === 0) {
@@ -155,9 +155,9 @@ export class CarDetailComponent implements OnInit {
         if (this.isEnough) {
           let rentalModel = Object.assign({}, this.rentForm.value)
 
-          
+
           this.isRentable(rentalModel)
-  
+
           setTimeout(() => {
             if (this.rentableCar != null) {
               this.toastrService.success("Redirecting to payment page", "Success");
@@ -166,11 +166,11 @@ export class CarDetailComponent implements OnInit {
               this.toastrService.error("The car was rented for the selected date ranges.", "Error");
             }
           }, 500);
-  
-  
-          } else {
+
+
+        } else {
           this.toastrService.error("Your findeks rating is not enough for renting this car.", "Error")
-          }
+        }
       }, 500);
     } else {
       this.toastrService.warning("Please check your forms", "Warning")

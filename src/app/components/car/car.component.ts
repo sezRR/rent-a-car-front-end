@@ -12,37 +12,37 @@ import { CarService } from 'src/app/services/car.service';
   styleUrls: ['./car.component.css']
 })
 export class CarComponent implements OnInit {
-  cars:Car[] = [];
+  cars: Car[] = [];
   dataLoaded = false;
 
-  constructor(private carService: CarService, private activatedRoute:ActivatedRoute, private toastrService:ToastrService, private carImageService:CarImageService) { }
+  constructor(private carService: CarService, private activatedRoute: ActivatedRoute, private toastrService: ToastrService, private carImageService: CarImageService) { }
 
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params=>{
-      if(params["brandId"] && params["colorId"]){
+    this.activatedRoute.params.subscribe(params => {
+      if (params["brandId"] && params["colorId"]) {
         this.getCarsByBrandIdAndColorId(params["brandId"], params["colorId"])
-      } 
-      else if(params["brandId"]){
+      }
+      else if (params["brandId"]) {
         this.getCarsByBrand(params["brandId"])
       }
-      else if(params["colorId"]){
+      else if (params["colorId"]) {
         this.getCarsByColor(params["colorId"]);
       }
-      else{
+      else {
         this.getCars()
       }
     })
   }
 
-  carImages:CarImage[] = []
+  carImages: CarImage[] = []
 
-  deleteCar(car:Car){
-    this.carImageService.getImagesByCarId(car.id).subscribe(response =>{
+  deleteCar(car: Car) {
+    this.carImageService.getImagesByCarId(car.id).subscribe(response => {
       this.carImages = response.data
 
-      this.carImageService.delete(this.carImages[0].carId).subscribe(response=>{
-        this.carService.delete(car).subscribe(response =>{
-          this.toastrService.success(response.message,"Success")
+      this.carImageService.delete(this.carImages[0].carId).subscribe(response => {
+        this.carService.delete(car).subscribe(response => {
+          this.toastrService.success(response.message, "Success")
           setTimeout(() => {
             window.location.reload();
           }, 1000);
@@ -53,29 +53,29 @@ export class CarComponent implements OnInit {
     })
   }
 
-  getCars(){
+  getCars() {
     this.carService.getCars().subscribe(response => {
       this.cars = response.data;
       this.dataLoaded = true;
     });
   }
 
-  getCarsByBrand(brandId: number){
-    this.carService.getCarsByBrand(brandId).subscribe(response=>{
-      this.cars = response.data;
-      this.dataLoaded = true;
-    })   
-  }
-
-  getCarsByColor(colorId: number){
-    this.carService.getCarsByColor(colorId).subscribe(response =>{
+  getCarsByBrand(brandId: number) {
+    this.carService.getCarsByBrand(brandId).subscribe(response => {
       this.cars = response.data;
       this.dataLoaded = true;
     })
   }
 
-  getCarsByBrandIdAndColorId(brandId: number, colorId: number){
-    this.carService.getCarsByBrandIdAndColorId(brandId, colorId).subscribe(response =>{
+  getCarsByColor(colorId: number) {
+    this.carService.getCarsByColor(colorId).subscribe(response => {
+      this.cars = response.data;
+      this.dataLoaded = true;
+    })
+  }
+
+  getCarsByBrandIdAndColorId(brandId: number, colorId: number) {
+    this.carService.getCarsByBrandIdAndColorId(brandId, colorId).subscribe(response => {
       this.cars = response.data;
       this.dataLoaded = true;
     })
