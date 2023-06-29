@@ -15,7 +15,7 @@
  <h2 align="center">RENTAR (RENT CAR) - FRONTEND</h2>
 
  <p align="center">Rentar 'Frontend' project with Angular</p>
- <p align="center">Click for <a href="https://github.com/sezRR/ReCapProject">The Backend</a></p>
+ <p align="center">Click for <a href="https://github.com/sezRR/rent-a-car-backend">The Backend</a></p>
 </p>
 
 
